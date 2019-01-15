@@ -27,7 +27,7 @@ namespace AirlineTicketResourceServer.Models
 
         public string Salt { get; set; }
         
-
+        
         public string FullName { get; set; }
         public UserGender Gender { get; set; }
         public DateTime Birthday { get; set; }
