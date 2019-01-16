@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace AirlineTicketResourceServer.Models
+namespace Airplanes.Models
 {
     /// <summary>
     /// Hạng vé máy bay
@@ -13,18 +11,19 @@ namespace AirlineTicketResourceServer.Models
     {
         [Key]
         public long Id { get; set; }
+
         public string TicketClassName { get; set; }
 
         // 1 hạng vé chứa nhiều vé ở các chuyến bay khác nhau
         public ICollection<DbTicket> DbTickets { get; set; }
 
-        public long CreatedAt { get; set; }
-        public long UpdatedAt { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
 
         public DbTicketClass()
         {
-            CreatedAt = DateTime.Now.Ticks;
-            UpdatedAt = DateTime.Now.Ticks;
+            CreatedAt = DateTime.Now;
+            UpdatedAt = DateTime.Now;
         }
     }
 }

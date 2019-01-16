@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Security.AccessControl;
-using System.Threading.Tasks;
 
-namespace AirlineTicketResourceServer.Models
+namespace Airplanes.Models
 {
     /// <summary>
     /// Thông tin 1 vé: hạng vé, chuyến bay, hành khách
@@ -26,25 +22,25 @@ namespace AirlineTicketResourceServer.Models
 
         // 1 vé chỉ được ghi tên 1 hành khách
         public long DbPassengerId { get; set; }
+
         public int Price { get; set; }
 
         //public int Quantity { get; set; }
 
-        public long CreatedAt { get; set; }
-        public long UpdatedAt { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
         public TicketStatus Status { get; set; }
-
 
         // Lien Ket
         public DbTicketClass DbTicketClass { get; set; }
+
         public DbPassenger DbPassenger { get; set; }
         public DbOrder DbOrder { get; set; }
-        
 
         public DbTicket()
         {
-            CreatedAt = DateTime.Now.Ticks;
-            UpdatedAt = 0;
+            CreatedAt = DateTime.Now;
+            UpdatedAt = DateTime.Now;
         }
     }
 
