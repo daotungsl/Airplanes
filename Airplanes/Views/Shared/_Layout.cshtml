@@ -25,11 +25,26 @@
     <div class="container p-3" style="background: url('https://i.imgur.com/5rsFVmh.jpg') right no-repeat border-box; background-size: 100% 100%;">
         <nav class="navbar bg-transparent" style="
         background: url('https://i.imgur.com/OzDwuMc.png') right no-repeat border-box; background-size: 100% 100%">
-            <a href="" class="navbar-brand">
-                <span class="row m-auto">
-                    <img src="https://i.imgur.com/mHgQIW6.png" height="60" alt="">
-                </span>
-            </a>
+
+            <div class="row">
+                <div class="col-9">
+                    <a href="/" class="navbar-brand">
+                        <span class="row m-auto">
+                            <img src="https://i.imgur.com/mHgQIW6.png" height="60" alt="">
+                        </span>
+                    </a>
+                </div>
+                @*<div class="col-3">
+                    <div id="google_translate_element"></div>
+
+                    <script type="text/javascript">
+                        function googleTranslateElementInit() {
+                            new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
+                        }
+                    </script>
+                </div>*@
+            </div>
+            
         </nav>
 
         <ul class="nav grey lighten-4 py-1 font-weight-bold mt-3 nav-fill">
@@ -102,7 +117,7 @@
                    aria-expanded="false">Đăng nhập</a>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="#">Đại lý</a>
-                    <a class="dropdown-item" href="#">Thành viên</a>
+                    <a class="dropdown-item" href="/oauth2/authentication">Thành viên</a>
                     <a class="dropdown-item" href="#">Phòng vé</a>
                     <a class="dropdown-item" href="#">Tổng đài</a>
                     <a class="dropdown-item" href="#">Kênh thanh toán</a>
@@ -146,6 +161,7 @@
             <script type="text/javascript" src="~/js/popper.min.js"></script>
             <script type="text/javascript" src="~/js/bootstrap.min.js"></script>
             <script type="text/javascript" src="~/js/mdb.min.js"></script>
+            @*<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>*@
 
 
             <script src="~/js/site.js" asp-append-version="true"></script>
