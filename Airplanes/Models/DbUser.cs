@@ -110,4 +110,3 @@ namespace Airplanes.Models
         Deactivated = 0,
         Blocked = 2
     }
-}
