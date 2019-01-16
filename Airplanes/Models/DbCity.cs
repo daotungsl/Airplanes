@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace AirlineTicketResourceServer.Models
+namespace Airplanes.Models
 {
-
     /// <summary>
     /// Thông tin chi tiết về 1 thành phố có hoặc không có sân bay
     /// </summary>
@@ -14,12 +9,14 @@ namespace AirlineTicketResourceServer.Models
     {
         [Key]
         public long Id { get; set; }
+
         public string Code { get; set; }
         public string Name { get; set; }
         public long ZipCode { get; set; }
 
         // Thành phố trực thuộc quốc gia nào
         public long DbCountryId { get; set; }
+
         public DbCountry DbCountry { get; set; }
 
         // Thành phố sở hữu sân bay nào
