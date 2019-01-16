@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security;
 using System.Threading.Tasks;
-using AirlineTicketResourceServer.Models;
 using Airplanes.Models;
 using Airplanes.Models.Login;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
+using Microsoft.Extensions.Logging;
 
 namespace Airplanes.Controllers
 {
@@ -34,18 +34,21 @@ namespace Airplanes.Controllers
         {
             if (!ModelState.IsValid)
             {
+                ViewBag.Error = "Login Fail";
                 return View("Login");
             }
 
             DbUser existUser = _context.DbUser.FirstOrDefault(u => u.Username == loginInformation.Username);
             if (existUser == null)
             {
+                ViewBag.Error = "Login Fail";
                 return View("Login");
             }
 
             if (Security.Security.GetInstance().EncryptPassword(loginInformation.Password, existUser.Salt) !=
                 existUser.Password)
             {
+                ViewBag.Error = "Login Fail";
                 return View("Login");
             }
 
