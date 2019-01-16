@@ -22,23 +22,46 @@ namespace AirlineTicketResourceServer.Models
         public string Username { get; set; }
 
         [Required]
-        [StringLength(100)]
+        [Display(Name = "Password")]
+        [StringLength(50, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [DataType(DataType.Password)]
         public string Password { get; set; }
+
+        [Required]
+        [Display(Name = "Confirm Password")]
+        [DataType(DataType.Password)]
+        [Compare("Password", ErrorMessage = "Passwords do not match.")]
+        public string ConfirmPassword { get; set; }
 
         public string Salt { get; set; }
         
-        
+        [Required]
+        [StringLength(30)]
+        [Display(Name = "Full Name")]
         public string FullName { get; set; }
+
+
         public UserGender Gender { get; set; }
+
+
+        [Required]
+        [DataType(DataType.Date)]
         public DateTime Birthday { get; set; }
+
+        [Required]
+        [StringLength(15, MinimumLength = 9)]
+        [Display(Name = "ID Number")]
         public string IdNumber { get; set; }
         [Required]
         [StringLength(20)]
         [Phone]
+        [Display(Name = "Phone Number")]
         public string Phone { get; set; }
         [Required]
         [EmailAddress]
+        [Display(Name = "E-mail address")]
         public string Email { get; set; }
+        [Required]
         public string Address { get; set; }
 
         // Điểm tích lũy khi mua vé hoặc hủy vé sẽ thay đổi
@@ -46,8 +69,8 @@ namespace AirlineTicketResourceServer.Models
 
         public EmailVerifyStatus EmailVerifyStatus { get; set; }
         public PhoneVerifyStatus PhoneVerifyStatus { get; set; }
-        public long CreatedAt { get; set; }
-        public long UpdatedAt { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
 
         public AccountStatus Status { get; set; }
 
@@ -59,8 +82,8 @@ namespace AirlineTicketResourceServer.Models
             RewardPoints = 0;
             EmailVerifyStatus = EmailVerifyStatus.Deactivated;
             PhoneVerifyStatus = PhoneVerifyStatus.Unconfirmed;
-            CreatedAt = DateTime.Now.Ticks;
-            UpdatedAt = 0;
+            CreatedAt = DateTime.Now;
+            UpdatedAt = DateTime.Now;
             Status = AccountStatus.Activated;
         }
     }
