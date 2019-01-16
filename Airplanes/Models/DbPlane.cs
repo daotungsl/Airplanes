@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace AirlineTicketResourceServer.Models
+namespace Airplanes.Models
 {
     /// <summary>
     ///  Máy bay
@@ -13,20 +11,21 @@ namespace AirlineTicketResourceServer.Models
     {
         [Key]
         public long Id { get; set; }
+
         public string PlaneName { get; set; }
         public string MadeIn { get; set; }
         public string Image { get; set; }
         public string UrlTemplate { get; set; }
-        public long CreatedAt { get; set; }
-        public long UpdatedAt { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
 
         // 1 Máy bay chứa nhiều chuyến bay
         public ICollection<DbFlight> DbFlights { get; set; }
 
         public DbPlane()
         {
-            CreatedAt = DateTime.Now.Ticks;
-            UpdatedAt = 0;
+            CreatedAt = DateTime.Now;
+            UpdatedAt = DateTime.Now;
         }
     }
 }

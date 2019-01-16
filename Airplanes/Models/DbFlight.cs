@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace AirlineTicketResourceServer.Models
+namespace Airplanes.Models
 {
     /// <summary>
     /// Chuyến Bay
@@ -24,18 +22,18 @@ namespace AirlineTicketResourceServer.Models
         public int TimeOfTransit { get; set; }
         public int FlightDuration { get; set; }
 
-        public long CreatedAt { get; set; }
-        public long UpdatedAt { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
         public FlightStatus Status { get; set; }
-        
+
         public ICollection<DbAvailableSeat> AvailableSeats { get; set; }
         public DbPlane DbPlane { get; set; }
         public DbRoute DbRoute { get; set; }
 
         public DbFlight()
         {
-            CreatedAt = DateTime.Now.Ticks;
-            UpdatedAt = 0;
+            CreatedAt = DateTime.Now;
+            UpdatedAt = DateTime.Now;
             Status = FlightStatus.Available;
         }
     }
@@ -45,6 +43,5 @@ namespace AirlineTicketResourceServer.Models
         Available = 0,
         TakeOff = 1,
         Land = 2
-
     }
 }

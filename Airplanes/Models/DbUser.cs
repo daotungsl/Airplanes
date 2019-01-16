@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Xml;
 
-namespace AirlineTicketResourceServer.Models
+namespace Airplanes.Models
 {
     /// <summary>
     /// Thông tin của 1 user đã đăng ký và điền đầy đủ thông tin
@@ -34,7 +31,7 @@ namespace AirlineTicketResourceServer.Models
         public string ConfirmPassword { get; set; }
 
         public string Salt { get; set; }
-        
+
         [Required]
         [StringLength(30)]
         [Display(Name = "Full Name")]
@@ -113,4 +110,3 @@ namespace AirlineTicketResourceServer.Models
         Deactivated = 0,
         Blocked = 2
     }
-}
