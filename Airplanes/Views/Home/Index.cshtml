@@ -51,7 +51,7 @@
         <img class="mt-3" src="https://www.vietjetair.com/UserFiles/image/Giave/05092016/vi(1).gif" alt="">
     </div>
     <div class="col-6">
-        <ul class="nav nav-tabs nav-fill bg-primary" id="myTab" role="tablist">
+        <ul class="nav nav-tabs nav-fill blue lighten-4" id="myTab" role="tablist">
             <li class="nav-item">
                 <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Đặt vé</a>
             </li>
@@ -65,7 +65,7 @@
         <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                 <div class="card">
-                    <div class="card-header bg-primary">
+                    <div class="card-header blue lighten-4">
                         Thông tin đặt vé
                     </div>
                     <div class="card-body">
@@ -83,25 +83,54 @@
                                 </label>
                             </div>
                             <hr />
+                            <div class="row">
+                                <div class="col-6">
+                                    <label class="label">Điểm khởi hành</label>
+                                    <div class="form-group">
+                                        <select class="form-control browser-default custom-select" id="frompoint">
+                                            <option disabled selected value="None">Chọn điểm khởi hành</option>
+                                            <option value="han">HAN</option>
+                                            <option value="sgn">SGN</option>
+                                        </select>
+                                    </div>
+                                </div>
 
-                            <label class="label">Điểm khởi hành</label>
-                            <br />
-                            <label class="label">Điểm đến</label>
+                                <div class="col-6">
+                                    <label class="label">Thời gian đi</label>
+                                    <div class="form-group">
+                                        <input placeholder="Chọn ngày đi" type="text" id="date-from" class="form-control datepicker">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-6">
+                                    <label class="label">Điểm đến</label>
+                                    <div class="form-group">
+                                        <select class="form-control browser-default custom-select" id="topoint">
+                                            <option disabled selected value="None">Chọn điểm đến</option>
+                                            <option value="han">HAN</option>
+                                            <option value="sgn">SGN</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-6">
+                                    <label class="label">Thời gian về</label>
+                                    <div class="form-group">
+                                        <input placeholder="Chọn ngày về" type="text" id="date-to" class="form-control datepicker">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <hr />
 
                             <h5 class="card-title">Special title treatment</h5>
                             <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
                             <a href="#" class="btn btn-primary">
                                 Tìm chuyến bay >>
                             </a>
-
-
-
                         </form>
-
-                        
-
-
-                        
                     </div>
                 </div>
                 <h2 class="text-danger font-weight-bold my-2">Tổng đài: 1900 8888</h2>
@@ -116,3 +145,6 @@
         </div>
     </div>
 </div>
+
+
+
