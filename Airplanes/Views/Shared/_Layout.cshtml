@@ -22,7 +22,7 @@
 </head>
 <body style="background: url('https://i.imgur.com/iN18GIe.jpg') right no-repeat border-box; background-size: 100% 100%">
 
-    <div class="container p-3" style="background: url('https://i.imgur.com/5rsFVmh.jpg') right no-repeat border-box; background-size: 100% 100%;">
+    <div class="container p-3 grey lighten-3">
         <nav class="navbar bg-transparent" style="
         background: url('https://i.imgur.com/OzDwuMc.png') right no-repeat border-box; background-size: 100% 100%">
 
@@ -47,7 +47,7 @@
             
         </nav>
 
-        <ul class="nav grey lighten-4 py-1 font-weight-bold mt-3 nav-fill">
+        <ul class="nav blue lighten-4 py-1 font-weight-bold mt-3 nav-fill">
             <li class="nav-item">
                 <a class="nav-link active" href="#">Tin tức</a>
             </li>
@@ -151,7 +151,7 @@
             @RenderBody()
             <hr />
             <div class="panel-footer navbar-fixed-bottom">
-                <h6 class="text-center mb-2 bg-primary pt-2 pb-2">Copyright - Eagle Airline © 2019</h6>
+                <h6 class="text-center mb-2 blue lighten-4 pt-2 pb-2">Copyright - Eagle Airline © 2019</h6>
             </div>
         </div>
 
@@ -165,6 +165,13 @@
 
 
             <script src="~/js/site.js" asp-append-version="true"></script>
+
+            <script>
+                $(document).ready(function () {
+                    console.log("ready!");
+                    $('.datepicker').pickadate();
+                });
+            </script>
         </environment>
         <environment exclude="Development">
             <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
