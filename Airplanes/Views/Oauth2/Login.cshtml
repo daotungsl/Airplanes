@@ -4,7 +4,7 @@
     ViewData["Title"] = "Login";
 }
 
-
+<span class="text-danger">@ViewBag.Error</span>
 <div class="card mt-3">
     <div class="card-header bg-primary">
         <h4 class="text-center text-white font-weight-bold">ĐĂNG NHẬP</h4>
@@ -23,15 +23,15 @@
             </div>
             <div class="form-group row">
                 <div class="col-4" >
-                    <input type="submit" value="Đăng nhập" class="btn btn-primary btn-sm btn-block ml-0" />
+                    <input type="submit" value="Login" class="btn btn-primary btn-sm btn-block ml-0" />
                 </div>
 
                 <div class="col-4" >
-                    <input type="reset" value="Xóa" class="btn btn-danger btn-sm btn-block ml-2" />
+                    <input type="reset" value="Reset" class="btn btn-danger btn-sm btn-block ml-2" />
                 </div>
 
                 <div class="col-4" >
-                    <a href="/dbusers/create" class="btn btn-warning btn-sm btn-block ml-2 pt-3" style="height: 100%;">
+                    <a href="/DbUsers/create" class="btn btn-warning btn-sm btn-block ml-2 pt-3" style="height: 100%;">
                         Đăng ký mới
                     </a>
                 </div>

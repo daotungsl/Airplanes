@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Identity;
 
 namespace Airplanes.Models
 {
@@ -9,8 +10,7 @@ namespace Airplanes.Models
     /// </summary>
     public class DbUser
     {
-        [Key]
-        public long Id { get; set; }
+        [Key] public long Id { get; set; }
         public long UId { get; set; }
 
         // Thêm các entity của bảng Account vào trong User
@@ -49,15 +49,18 @@ namespace Airplanes.Models
         [StringLength(15, MinimumLength = 9)]
         [Display(Name = "ID Number")]
         public string IdNumber { get; set; }
+
         [Required]
         [StringLength(20)]
         [Phone]
         [Display(Name = "Phone Number")]
         public string Phone { get; set; }
+
         [Required]
         [EmailAddress]
         [Display(Name = "E-mail address")]
         public string Email { get; set; }
+
         [Required]
         public string Address { get; set; }
 
@@ -110,3 +113,4 @@ namespace Airplanes.Models
         Deactivated = 0,
         Blocked = 2
     }
+}
