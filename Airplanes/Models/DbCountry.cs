@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AirlineTicketResourceServer.Models
+namespace Airplanes.Models
 {
     /// <summary>
     /// Quốc gia
@@ -15,8 +15,8 @@ namespace AirlineTicketResourceServer.Models
         public long Id { get; set; }
         public string CountryName { get; set; }
 
-        public long CreatedAt { get; set; }
-        public long UpdatedAt { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
 
         public ICollection<DbAirPort> DbAirPorts { get; set; }
 
@@ -24,8 +24,8 @@ namespace AirlineTicketResourceServer.Models
 
         public DbCountry()
         {
-            CreatedAt = DateTime.Now.Ticks;
-            UpdatedAt = 0;
+            CreatedAt = DateTime.Now;
+            UpdatedAt = DateTime.Now;
         }
     }
 }
