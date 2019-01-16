@@ -1,5 +1,3 @@
-using System;
-
 namespace Airplanes.Models
 {
     public class ErrorViewModel
