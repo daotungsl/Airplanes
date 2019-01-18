@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using AirlineTicketResourceServer.Models;
+using Airplanes.Models;
 
 namespace Airplanes.Models
 {
@@ -14,7 +14,7 @@ namespace Airplanes.Models
         {
         }
 
-        public DbSet<AirlineTicketResourceServer.Models.DbUser> DbUser { get; set; }
+        public DbSet<Airplanes.Models.DbUser> DbUser { get; set; }
         
     }
 }
