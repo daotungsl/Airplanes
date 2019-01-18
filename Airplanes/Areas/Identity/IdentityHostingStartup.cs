@@ -1,5 +1,6 @@
 ﻿using System;
 using Airplanes.Models;
+using Airplanes.Models.Custom;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI;
@@ -15,6 +16,12 @@ namespace Airplanes.Areas.Identity
         public void Configure(IWebHostBuilder builder)
         {
             builder.ConfigureServices((context, services) => {
+                services.AddDbContext<AirplanesContext>(options =>
+                    options.UseSqlServer(
+                        context.Configuration.GetConnectionString("AirplanesContextConnection")));
+
+                //services.AddDefaultIdentity<AirplanesUser>()
+                //    .AddEntityFrameworkStores<AirplanesContext>();
             });
         }
     }
