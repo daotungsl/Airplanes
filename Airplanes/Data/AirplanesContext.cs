@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace Airplanes.Models
+namespace Airplanes.Data
 {
     public class AirplanesContext : IdentityDbContext<AirplanesUser>
     {
@@ -15,7 +15,7 @@ namespace Airplanes.Models
             : base(options)
         {
         }
-
+        public DbSet<Airplanes.Models.DbNews> DbNews { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);

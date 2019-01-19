@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Airplanes.Data;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -36,6 +37,9 @@ namespace Airplanes
                 .AddEntityFrameworkStores<AirplanesContext>()
                 .AddDefaultTokenProviders()
                 .AddDefaultUI();
+
+            services.AddDbContext<AirplanesContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("AirplanesContextConnection")));
 
             //services.AddDbContext<AirplanesContext>(options =>
             //        options.UseSqlServer(Configuration.GetConnectionString("AirplanesContext")));
