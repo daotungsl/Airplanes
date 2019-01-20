@@ -74,7 +74,7 @@ namespace Airplanes.Models
 
         public AccountStatus Status { get; set; }
 
-        public ICollection<DbRewardPointsLog> DbRewardPointsLogs { get; set; }
+        //public ICollection<DbRewardPointsLog> DbRewardPointsLogs { get; set; }
 
         public DbUser()
         {

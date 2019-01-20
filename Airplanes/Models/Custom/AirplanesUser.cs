@@ -35,6 +35,12 @@ namespace Airplanes.Models.Custom
 
         [PersonalData]
         public DateTime UpdatedAt { get; set; }
+
+        public ICollection<DbRewardPointsLog> DbRewardPointsLogs { get; set; }
+
+        public ICollection<DbOrder> DbOrders { get; set; }
+
+        public ICollection<DbPassenger> DbPassengers { get; set; }
     }
 
     public enum UserGender

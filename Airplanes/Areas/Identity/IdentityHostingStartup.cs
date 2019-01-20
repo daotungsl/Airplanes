@@ -18,7 +18,7 @@ namespace Airplanes.Areas.Identity
             builder.ConfigureServices((context, services) => {
                 services.AddDbContext<AirplanesContext>(options =>
                     options.UseSqlServer(
-                        context.Configuration.GetConnectionString("AirplanesContextConnection")));
+                        context.Configuration.GetConnectionString("AirplanesContext")));
 
                 //services.AddDefaultIdentity<AirplanesUser>()
                 //    .AddEntityFrameworkStores<AirplanesContext>();

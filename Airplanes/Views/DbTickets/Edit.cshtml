@@ -1,0 +1,69 @@
+﻿@model Airplanes.Models.DbTicket
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>DbTicket</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="DbOrderId" class="control-label"></label>
+                <select asp-for="DbOrderId" class="custom-select browser-default" asp-items="ViewBag.DbOrderId"></select>
+                <span asp-validation-for="DbOrderId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DbTicketClassId" class="control-label"></label>
+                <select asp-for="DbTicketClassId" class="custom-select browser-default" asp-items="ViewBag.DbTicketClassId"></select>
+                <span asp-validation-for="DbTicketClassId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DbFlightId" class="control-label"></label>
+                <select asp-for="DbFlightId" class="custom-select browser-default" asp-items="ViewBag.DbFlightId"></select>
+                <span asp-validation-for="DbFlightId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DbPassengerId" class="control-label"></label>
+                <select asp-for="DbPassengerId" class="custom-select browser-default" asp-items="ViewBag.DbPassengerId"></select>
+                <span asp-validation-for="DbPassengerId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CreatedAt" class="control-label"></label>
+                <input asp-for="CreatedAt" disabled="disabled" class="form-control" />
+                <span asp-validation-for="CreatedAt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UpdatedAt" class="control-label"></label>
+                <input asp-for="UpdatedAt"disabled="disabled" class="form-control" />
+                <span asp-validation-for="UpdatedAt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Status" class="control-label"></label>
+                <select asp-for="Status" class="custom-select browser-default"></select>
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

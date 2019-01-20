@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Airplanes.Models
 {
@@ -12,18 +13,25 @@ namespace Airplanes.Models
         public long Id { get; set; }
 
         // ID chuyến bay
+        [ForeignKey("DbFlight")]
         public long DbFlightId { get; set; }
+        public DbFlight DbFlight { get; set; }
 
         // ID Hạng vé
-        public long DbTicketClassId { get; set; }
+        [ForeignKey("DbTicketClass")]
+        public long TicketClassId { get; set; }
+        public DbTicketClass DbTicketClass { get; set; }
 
+        [Required]
+        [DataType(DataType.Text)]
+        [Display(Name = "Quantity")]
         public int Quantity { get; set; }
 
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
 
-        public DbFlight DbFlight { get; set; }
-        public DbTicketClass DbTicketClass { get; set; }
+        
+        
 
         public DbAvailableSeat()
         {
