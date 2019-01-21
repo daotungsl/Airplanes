@@ -1,0 +1,64 @@
+﻿@model Airplanes.Models.DbCity
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>DbCity</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Code" class="control-label"></label>
+                <input asp-for="Code" class="form-control" />
+                <span asp-validation-for="Code" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ZipCode" class="control-label"></label>
+                <input asp-for="ZipCode" class="form-control" />
+                <span asp-validation-for="ZipCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DbCountryId" class="control-label"></label>
+                <select asp-for="DbCountryId" class="custom-select browser-default" asp-items="ViewBag.DbCountryId"></select>
+                <span asp-validation-for="DbCountryId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CreatedAt" class="control-label"></label>
+                <input asp-for="CreatedAt" disabled="disabled" class="form-control" />
+                <span asp-validation-for="CreatedAt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UpdatedAt" class="control-label"></label>
+                <input asp-for="UpdatedAt" disabled="disabled" class="form-control" />
+                <span asp-validation-for="UpdatedAt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AirportStatus" class="control-label"></label>
+                <select asp-for="AirportStatus" class="custom-select browser-default"></select>
+                <span asp-validation-for="AirportStatus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

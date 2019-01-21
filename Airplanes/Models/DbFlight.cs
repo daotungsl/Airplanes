@@ -18,8 +18,16 @@ namespace Airplanes.Models
         // ID Máy bay sử dụng cho chuyến này
         public long DbPlaneId { get; set; }
 
+        [Required]
+        [Display(Name = "Flight Time")]
         public DateTime FlightTime { get; set; }
+
+        [Required]
+        [Display(Name = "Time of transit")]
         public int TimeOfTransit { get; set; }
+
+        [Required]
+        [Display(Name = "Flight Duration")]
         public int FlightDuration { get; set; }
 
         public DateTime CreatedAt { get; set; }
@@ -29,6 +37,8 @@ namespace Airplanes.Models
         public ICollection<DbAvailableSeat> AvailableSeats { get; set; }
         public DbPlane DbPlane { get; set; }
         public DbRoute DbRoute { get; set; }
+        public DbTransit DbTransit { get; set; }
+        public ICollection<DbTicket> DbTickets { get; set; }
 
         public DbFlight()
         {

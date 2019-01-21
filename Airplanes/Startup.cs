@@ -1,11 +1,11 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Airplanes.Models;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
-using Airplanes.Models;
 using Airplanes.Models.Custom;
 using Microsoft.AspNetCore.Identity;
 
@@ -36,6 +36,14 @@ namespace Airplanes
                 .AddEntityFrameworkStores<AirplanesContext>()
                 .AddDefaultTokenProviders()
                 .AddDefaultUI();
+
+            services.AddDbContext<AirplanesContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("AirplanesContext")));
+            
+            
+
+            //services.AddDbContext<AirplanesContextResource>(options =>
+            //        options.UseSqlServer(Configuration.GetConnectionString("AirplanesContextResource")));
 
             //services.AddDbContext<AirplanesContext>(options =>
             //        options.UseSqlServer(Configuration.GetConnectionString("AirplanesContext")));
