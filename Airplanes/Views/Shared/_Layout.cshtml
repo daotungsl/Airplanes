@@ -112,34 +112,38 @@
                 <a class="nav-link disabled" href="#">|</a>
             </li>
 
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
-                   aria-expanded="false">Đăng nhập</a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Đại lý</a>
-                    <a class="dropdown-item" href="/oauth2/authentication">Thành viên</a>
-                    <a class="dropdown-item" href="#">Phòng vé</a>
-                    <a class="dropdown-item" href="#">Tổng đài</a>
-                    <a class="dropdown-item" href="#">Kênh thanh toán</a>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#">|</a>
-            </li>
+            @*<li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+               aria-expanded="false">Đăng nhập</a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Đại lý</a>
+                <a class="dropdown-item" href="/oauth2/authentication">Thành viên</a>
+                <a class="dropdown-item" href="#">Phòng vé</a>
+                <a class="dropdown-item" href="#">Tổng đài</a>
+                <a class="dropdown-item" href="#">Kênh thanh toán</a>
+            </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" href="#">|</a>
+        </li>
 
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
-                   aria-expanded="false">Đặt vé</a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Mua vé online</a>
-                    <a class="dropdown-item" href="#">Đại lý</a>
-                    <a class="dropdown-item" href="#">Phòng vé</a>
-                    <a class="dropdown-item" href="#">Tổng đài</a>
-                    <a class="dropdown-item" href="#">Đăng ký đại lý</a>
-                    <a class="dropdown-item" href="#">Khách hàng doanh nghiệp</a>
-                    <a class="dropdown-item" href="#">Câu hỏi thường gặp</a>
-                    <a class="dropdown-item" href="#">FAQ</a>
-                </div>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+               aria-expanded="false">Đặt vé</a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Mua vé online</a>
+                <a class="dropdown-item" href="#">Đại lý</a>
+                <a class="dropdown-item" href="#">Phòng vé</a>
+                <a class="dropdown-item" href="#">Tổng đài</a>
+                <a class="dropdown-item" href="#">Đăng ký đại lý</a>
+                <a class="dropdown-item" href="#">Khách hàng doanh nghiệp</a>
+                <a class="dropdown-item" href="#">Câu hỏi thường gặp</a>
+                <a class="dropdown-item" href="#">FAQ</a>
+            </div>
+        </li>*@
+
+            <li class="nav-item">
+                <partial name="_LoginPartial" />
             </li>
 
         </ul>
