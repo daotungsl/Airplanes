@@ -11,6 +11,8 @@ namespace Airplanes.Models
 {
     public class AirplanesContext : IdentityDbContext<AirplanesUser>
     {
+        
+
         public AirplanesContext(DbContextOptions<AirplanesContext> options)
             : base(options)
         {
@@ -42,6 +44,7 @@ namespace Airplanes.Models
         public DbSet<Airplanes.Models.DbOrder> DbOrder { get; set; }
 
         public DbSet<Airplanes.Models.DbTicket> DbTicket { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
