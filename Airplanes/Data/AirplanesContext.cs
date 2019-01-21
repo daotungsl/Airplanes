@@ -17,31 +17,33 @@ namespace Airplanes.Models
             : base(options)
         {
         }
+        public DbSet<Airplanes.Models.DbNews> DbNews { get; set; }
 
+        public DbSet<Airplanes.Models.DbRewardPointsLog> DbRewardPointsLog { get; set; }
 
+        public DbSet<Airplanes.Models.DbPassenger> DbPassenger { get; set; }
 
-        public DbSet<Airplanes.Models.DbAirPort> DbAirPorts { get; set; }
-        public DbSet<Airplanes.Models.DbCity> DbCities { get; set; }
-        public DbSet<Airplanes.Models.DbAvailableSeat> DbAvailableSeats { get; set; }
-        public DbSet<Airplanes.Models.DbCountry> DbCountries { get; set; }
-        public DbSet<Airplanes.Models.DbFlight> DbFlights { get; set; }
-        public DbSet<Airplanes.Models.DbOrder> DbOrders { get; set; }
-        public DbSet<Airplanes.Models.DbPassenger> DbPassengers { get; set; }
-        public DbSet<Airplanes.Models.DbPlane> DbPlanes { get; set; }
-        public DbSet<Airplanes.Models.DbRewardPointsLog> DbRewardPointsLogs { get; set; }
-        public DbSet<Airplanes.Models.DbRoute> DbRoutes { get; set; }
-        public DbSet<Airplanes.Models.DbTicket> DbTickets { get; set; }
-        public DbSet<Airplanes.Models.DbTicketClass> DbTicketClasses { get; set; }
-        public DbSet<Airplanes.Models.DbTransit> DbTransits { get; set; }
-        public DbSet<Airplanes.Models.DbUser> DbUsers { get; set; }
+        public DbSet<Airplanes.Models.DbRoute> DbRoute { get; set; }
 
+        public DbSet<Airplanes.Models.DbPlane> DbPlane { get; set; }
 
+        public DbSet<Airplanes.Models.DbCountry> DbCountry { get; set; }
 
+        public DbSet<Airplanes.Models.DbCity> DbCity { get; set; }
 
+        public DbSet<Airplanes.Models.DbAirport> DbAirport { get; set; }
 
+        public DbSet<Airplanes.Models.DbTicketClass> DbTicketClass { get; set; }
 
+        public DbSet<Airplanes.Models.DbFlight> DbFlight { get; set; }
 
+        public DbSet<Airplanes.Models.DbTransit> DbTransit { get; set; }
 
+        public DbSet<Airplanes.Models.DbAvailableSeat> DbAvailableSeat { get; set; }
+
+        public DbSet<Airplanes.Models.DbOrder> DbOrder { get; set; }
+
+        public DbSet<Airplanes.Models.DbTicket> DbTicket { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
