@@ -1,0 +1,58 @@
+﻿@model Airplanes.Models.DbCity
+
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<h4>DbCity</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Code" class="control-label"></label>
+                <input asp-for="Code" class="form-control" />
+                <span asp-validation-for="Code" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ZipCode" class="control-label"></label>
+                <input asp-for="ZipCode" class="form-control" />
+                <span asp-validation-for="ZipCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DbCountryId" class="control-label"></label>
+                <select asp-for="DbCountryId" class ="custom-select browser-default" asp-items="ViewBag.DbCountryId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="AirportStatus" class="control-label"></label>
+                <fieldset>
+                    <select class="custom-select browser-default" asp-for="AirportStatus">
+                        <option value="1">Exist</option>
+                        <option selected="selected" value="0">Not Exist</option>
+                    </select>
+                </fieldset>
+                <span asp-validation-for="AirportStatus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
