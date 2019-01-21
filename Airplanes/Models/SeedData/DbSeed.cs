@@ -17,13 +17,17 @@ namespace Airplanes.Models
                     DbContextOptions<AirplanesContext>>()))
             {
                 // Look for any movies.
-                if (context.DbAirPorts.Any() || context.DbCities.Any())
+                if (context.DbAirport.Any() || context.DbCity.Any() || context.DbAvailableSeat.Any()
+                    || context.DbCountry.Any() || context.DbFlight.Any() || context.DbNews.Any()
+                    || context.DbOrder.Any() || context.DbPassenger.Any() || context.DbPlane.Any()
+                    || context.DbRewardPointsLog.Any() || context.DbRoute.Any() || context.DbTicket.Any()
+                    || context.DbTicketClass.Any() || context.DbTransit.Any() )
                 {
                     return;   // DB has been seeded
                 }
 
-                context.DbAirPorts.AddRange(
-                    new DbAirPort
+                context.DbAirport.AddRange(
+                    new DbAirport
                     {
                         AirportName = "Nội Bài",
                         DbCityId = 1,
@@ -31,7 +35,7 @@ namespace Airplanes.Models
                         UpdatedAt = DateTime.Now
                     },
 
-                    new DbAirPort
+                    new DbAirport
                     {
                         AirportName = "Tân Sân Nhất",
                         DbCityId = 1,
@@ -40,16 +44,23 @@ namespace Airplanes.Models
                     }
                 );
 
-                context.DbCities.AddRange(
+                string[] CityData = { "" };
+                string[] CodeData = { "" };
+                int[] ZipCodeData = {  }; 
+                for(int num = 0; num <= CityData.Length; num++  )
+                {
+                    context.DbCity.AddRange(
                     new DbCity
                     {
-                        Code = "HAN",
-                        Name = "Hà Nội",
-                        ZipCode = 123,
+                        Code = CodeData[num],
+                        Name = CityData[num],
+                        ZipCode = ZipCodeData[num],
                         DbCountryId = 1,
                         AirportStatus = AirportStatus.Exist
                     }
                     );
+                };
+                
 
                 string[] CountryData = { "Afghanistan", "Albania", "Algeria", "Andorra", "Angola",
                                         "Antigua & Barbuda", "Argentina", "Armenia", "Australia", "Austria",
@@ -93,7 +104,7 @@ namespace Airplanes.Models
                 foreach (string country in CountryData)
                 {
 
-                    context.DbCountries.AddRange(
+                    context.DbCountry.AddRange(
                    new DbCountry
                    {
                        CountryName = country,
@@ -103,7 +114,7 @@ namespace Airplanes.Models
                    );
                 };
 
-                context.DbPlanes.AddRange(
+                context.DbPlane.AddRange(
                     new DbPlane
                     {
                         PlaneName = "Airbus A330-300",
@@ -147,11 +158,11 @@ namespace Airplanes.Models
                         Image = "~/images/plane/...",
                         CreatedAt = DateTime.Now,
                         UpdatedAt = DateTime.Now
-                    },
-                    Airbus A320
+                    }
+
 
                     );
-                context.DbFlights.AddRange(
+                context.DbFlight.AddRange(
                     new DbFlight
                     {
                         DbRouteId = 1,
