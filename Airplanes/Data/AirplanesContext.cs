@@ -11,6 +11,8 @@ namespace Airplanes.Models
 {
     public class AirplanesContext : IdentityDbContext<AirplanesUser>
     {
+        
+
         public AirplanesContext(DbContextOptions<AirplanesContext> options)
             : base(options)
         {
@@ -42,9 +44,11 @@ namespace Airplanes.Models
         public DbSet<Airplanes.Models.DbOrder> DbOrder { get; set; }
 
         public DbSet<Airplanes.Models.DbTicket> DbTicket { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+           
             // Customize the ASP.NET Identity model and override the defaults if needed.
             // For example, you can rename the ASP.NET Identity table names and more.
             // Add your customizations after calling base.OnModelCreating(builder);
