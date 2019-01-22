@@ -23,6 +23,11 @@ namespace Airplanes.Controllers.MainController
 
         [BindProperty]
         public SelectInformation selectInformation { get; set; }
+        public class DetailFlight
+        {
+            public DbFlight DbFlight { get; set; }
+            public List<DbAvailableSeat> DbAvailableSeats { get; set; }
+        }
         public string ReturnUrl { get; set; }
         public class SelectInformation
         {
@@ -118,6 +123,34 @@ namespace Airplanes.Controllers.MainController
         {
             ViewData["NotFound"] = "Not Found Flight";
             return View("ListFlightChoise");
+        }
+
+        public async Task<IActionResult> DetailsFlight(long? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var dbFlight = await _context.DbFlight
+                .Include(d => d.DbPlane)
+                .Include(d => d.DbRoute)
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (dbFlight == null)
+            {
+                return NotFound();
+            }
+
+            List<DbAvailableSeat> dbSeat = await _context.DbAvailableSeat
+                .Include(s => s.DbFlight)
+                .Include(s => s.DbTicketClass).Where(m => m.DbFlightId == dbFlight.Id).ToListAsync();
+
+            DetailFlight dtf = new DetailFlight
+            {
+                DbFlight = dbFlight,
+                DbAvailableSeats = dbSeat
+            };
+
+            return View("DetailsFlight", dtf);
         }
     }
 }

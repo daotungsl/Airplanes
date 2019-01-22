@@ -12,6 +12,11 @@ namespace Airplanes.Models
         [Key]
         public long Id { get; set; }
 
+        [Required]
+        [StringLength(20, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 5)]
+        [Display(Name = "Roll Number")]
+        public string RollNumber { get; set; }
+
         // ID Đường bay
         public long DbRouteId { get; set; }
 
