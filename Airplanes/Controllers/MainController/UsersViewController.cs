@@ -75,23 +75,42 @@ namespace Airplanes.Controllers.MainController
                 if (city2 == null)
                 {
                     List<DbRoute> list = await _context.DbRoute.Where(r => r.FromAirport == city1.Code).ToListAsync();
-
-                    for (int i = 0; i < list.Count; i++)
+                    
+                    if (FlightExists(date))
                     {
-                        var flight = _context.DbFlight.FirstOrDefault(f => f.DbRouteId == list[i].Id && f.FlightTime.Date == date);
-                        if (flight!= null)
+                        for (int i = 0; i < list.Count; i++)
                         {
-                            flights.Add(flight);
+                            var flight = _context.DbFlight.FirstOrDefault(f => f.DbRouteId == list[i].Id && f.FlightTime.Date == date);
+                            if (flight != null)
+                            {
+                                flights.Add(flight);
+                            }
                         }
-                    }
 
-                    if (flights.Count == 0)
-                    {
-                        ViewBag.Data = "Not Found";
+                        if (flights.Count == 0)
+                        {
+                            ViewBag.Data = "Not Found";
+                            return View("ListFlightChoise", flights);
+                        }
                         return View("ListFlightChoise", flights);
                     }
-                    return View("ListFlightChoise", flights);
-
+                    else
+                    {
+                        foreach (var item in list)
+                        {
+                            var flight = _context.DbFlight.FirstOrDefault(f => f.DbRouteId == item.Id);
+                            if (flight != null)
+                            {
+                                flights.Add(flight);
+                            }
+                        }
+                        if (flights.Count == 0)
+                        {
+                            ViewBag.Data = "Not Found";
+                            return View("ListFlightChoise", flights);
+                        }
+                        return View("ListFlightChoise", flights);
+                    }
                 }
 
                 var route = _context.DbRoute.FirstOrDefault(r => r.FromAirport == city1.Code && r.ToAirport == city2.Code);
@@ -143,14 +162,26 @@ namespace Airplanes.Controllers.MainController
             List<DbAvailableSeat> dbSeat = await _context.DbAvailableSeat
                 .Include(s => s.DbFlight)
                 .Include(s => s.DbTicketClass).Where(m => m.DbFlightId == dbFlight.Id).ToListAsync();
-
             DetailFlight dtf = new DetailFlight
             {
                 DbFlight = dbFlight,
                 DbAvailableSeats = dbSeat
             };
 
+            if (dbSeat.Count == 0)
+            {
+                ViewBag.Seat = "SORRY !";
+                ViewBag.Seat2 = "Not Have Information Ticket In This Flight!";
+                return View("DetailsFlight", dtf);
+            }
+            
+
             return View("DetailsFlight", dtf);
+        }
+
+        private bool FlightExists(DateTime date)
+        {
+            return _context.DbFlight.Any(e => e.FlightTime.Date == date);
         }
     }
 }

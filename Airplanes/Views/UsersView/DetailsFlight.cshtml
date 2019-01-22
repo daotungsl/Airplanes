@@ -10,80 +10,95 @@
     <div>
         <h4>DbFlight</h4>
         <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.DbFlight.FlightTime)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.DbFlight.FlightTime)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.DbFlight.TimeOfTransit)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.DbFlight.TimeOfTransit)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.DbFlight.FlightDuration)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.DbFlight.FlightDuration)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.DbFlight.DbPlane.PlaneName)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.DbFlight.DbPlane.PlaneName)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.DbFlight.DbRoute.FromAirport)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.DbFlight.DbRoute.FromAirport)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.DbFlight.DbRoute.ToAirport)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.DbFlight.DbRoute.ToAirport)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.DbFlight.Status)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.DbFlight.Status)
-            </dd>
+        <div class="row">
+            <div class="col-md-6">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.DbFlight.RollNumber)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.DbFlight.RollNumber)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.DbFlight.FlightTime)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.DbFlight.FlightTime)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.DbFlight.TimeOfTransit)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.DbFlight.TimeOfTransit)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.DbFlight.FlightDuration)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.DbFlight.FlightDuration)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.DbFlight.DbPlane.PlaneName)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.DbFlight.DbPlane.PlaneName)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.DbFlight.DbRoute.FromAirport)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.DbFlight.DbRoute.FromAirport)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.DbFlight.DbRoute.ToAirport)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.DbFlight.DbRoute.ToAirport)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.DbFlight.Status)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.DbFlight.Status)
+                    </dd>
 
-        </dl>
-        <dl class="dl-horizontal">
-            @foreach (var item in Model.DbAvailableSeats)
-            {
-                <dt>
-                    @Html.DisplayNameFor(modelItem => item.DbTicketClass.TicketClassName)
-                </dt>
-                <dd>
-                    @Html.DisplayFor(modelItem => item.DbTicketClass.TicketClassName)
-                </dd>
-                <dt>
-                    @Html.DisplayNameFor(modelItem => item.DbTicketClass.Price)
-                </dt>
-                <dd>
-                    @Html.DisplayFor(modelItem => item.DbTicketClass.Price)
-                </dd>
-                <dt>
-                    @Html.DisplayNameFor(modelItem => item.Quantity)
-                </dt>
-                <dd>
-                    @Html.DisplayFor(modelItem => item.Quantity)
-                </dd>
-                <dt>
-                    @Html.DisplayNameFor(modelItem => item.RestTicket)
-                </dt>
-                <dd>
-                    @Html.DisplayFor(modelItem => item.RestTicket)
-                </dd>
-            }
-        </dl>
+                </dl>
+            </div>
+            <div class="col-md-6">
+                @*<label>@ViewBag.Seat</label>*@
+                <h3 style="text-align: center">@ViewBag.Seat</h3>
+                <h3 style="text-align: center">@ViewBag.Seat2</h3>
+                <dl class="dl-horizontal">
+                    @foreach (var item in Model.DbAvailableSeats)
+                    {
+                        <dt>
+                            @Html.DisplayNameFor(modelItem => item.DbTicketClass.TicketClassName)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(modelItem => item.DbTicketClass.TicketClassName)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(modelItem => item.DbTicketClass.Price)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(modelItem => item.DbTicketClass.Price)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(modelItem => item.Quantity)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(modelItem => item.Quantity)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(modelItem => item.RestTicket)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(modelItem => item.RestTicket)
+                        </dd>
+                    }
+                </dl>
+            </div>
+        </div>
     </div>
     <div>
         @*<a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |*@
