@@ -19,7 +19,7 @@ namespace Airplanes.Models
         public string PlaneName { get; set; }
 
         [Required]
-        [StringLength(20, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 5)]
+        [StringLength(20, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 3)]
         [DataType(DataType.Text)]
         [Display(Name = "Made in")]
         public string MadeIn { get; set; }
