@@ -55,7 +55,7 @@
             </dd>
 
         </dl>
-        @*<dl class="dl-horizontal">
+        <dl class="dl-horizontal">
             @foreach (var item in Model.DbAvailableSeats)
             {
                 <dt>
@@ -76,8 +76,14 @@
                 <dd>
                     @Html.DisplayFor(modelItem => item.Quantity)
                 </dd>
+                <dt>
+                    @Html.DisplayNameFor(modelItem => item.RestTicket)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(modelItem => item.RestTicket)
+                </dd>
             }
-        </dl>*@
+        </dl>
     </div>
     <div>
         @*<a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |*@
