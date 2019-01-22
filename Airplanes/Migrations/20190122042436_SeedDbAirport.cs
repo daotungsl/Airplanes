@@ -12,19 +12,19 @@ namespace Airplanes.Migrations
                                     "Đà Nẵng", "Điện Biên Phủ", "Pleiku", "Cát Bi", "Nội Bài",
                                     "Tân Sơn Nhất", "Cam Ranh", "Rạch Giá", "Phú Quốc", "Liên Khương",
                                     "Vinh", "Tuy Hòa", "Đồng Hới", "Chu Lai", "Phú Bài", "Thọ Xuân", "Vân Đồn" };
-          
+
             for (int num = 0; num < AirportNameVN.Length; num++)
             {
                 migrationBuilder.InsertData(
                  table: "DbAirport",
-                 columns: new[] { "AirportName", "DbCityId","CreatedAt", "UpdatedAt" },
-                 values: new object[] { AirportNameVN[num], num+1, DateTime.Now, DateTime.Now }
+                 columns: new[] { "AirportName", "DbCityId", "CreatedAt", "UpdatedAt" },
+                 values: new object[] { AirportNameVN[num], num + 1, DateTime.Now, DateTime.Now }
                  );
             };
 
             //City China
             string[] AirportNameChina = { "Bắc Kinh", "Hồng Kiều", "Bạch Vân", "Tiêu Sơn", "Song Lưu", "Hồng Kông", "Macau" };
-            
+
 
             for (int num = 0; num < AirportNameChina.Length; num++)
             {
@@ -156,7 +156,7 @@ namespace Airplanes.Migrations
                 migrationBuilder.InsertData(
                  table: "DbAirport",
                  columns: new[] { "AirportName", "DbCityId", "CreatedAt", "UpdatedAt" },
-                 values: new object[] { AirportNameAustralia[num], 54, DateTime.Now, DateTime.Now }
+                 values: new object[] { AirportNameAustralia[num], num + 54, DateTime.Now, DateTime.Now }
                  );
             };
 
@@ -168,7 +168,7 @@ namespace Airplanes.Migrations
                 migrationBuilder.InsertData(
                  table: "DbAirport",
                  columns: new[] { "AirportName", "DbCityId", "CreatedAt", "UpdatedAt" },
-                 values: new object[] { AirportNameZealand[num], 57, DateTime.Now, DateTime.Now }
+                 values: new object[] { AirportNameZealand[num], num + 57, DateTime.Now, DateTime.Now }
                  );
             };
 
@@ -180,7 +180,7 @@ namespace Airplanes.Migrations
                 migrationBuilder.InsertData(
                  table: "DbAirport",
                  columns: new[] { "AirportName", "DbCityId", "CreatedAt", "UpdatedAt" },
-                 values: new object[] { AirportNameThailand[num], 60, DateTime.Now, DateTime.Now }
+                 values: new object[] { AirportNameThailand[num], num + 60, DateTime.Now, DateTime.Now }
                  );
             };
 
@@ -206,7 +206,7 @@ namespace Airplanes.Migrations
                 migrationBuilder.InsertData(
                  table: "DbAirport",
                  columns: new[] { "AirportName", "DbCityId", "CreatedAt", "UpdatedAt" },
-                 values: new object[] { AirportNameAfrica[num], 64, DateTime.Now, DateTime.Now }
+                 values: new object[] { AirportNameAfrica[num], num + 64, DateTime.Now, DateTime.Now }
                  );
             };
 
@@ -239,6 +239,7 @@ namespace Airplanes.Migrations
                  values: new object[] { "Havel Prava", 81, DateTime.Now, DateTime.Now }
                  );
         }
+
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {

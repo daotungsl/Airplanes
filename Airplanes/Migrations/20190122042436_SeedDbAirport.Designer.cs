@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Airplanes.Migrations
 {
     [DbContext(typeof(AirplanesContext))]
-    [Migration("20190121163257_SeedDbAirport")]
+    [Migration("20190122042436_SeedDbAirport")]
     partial class SeedDbAirport
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
