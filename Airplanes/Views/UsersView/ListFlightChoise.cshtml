@@ -4,97 +4,88 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
-
 @*<p>
     <a asp-action="Create">Create New</a>
 </p>*@
 <label>@ViewBag.NotFound</label>
-<table class="table">
-    <thead>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Id)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RollNumber)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FlightTime)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TimeOfTransit)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FlightDuration)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DbPlane.PlaneName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DbRoute.FromAirport)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DbRoute.ToAirport)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreatedAt)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UpdatedAt)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Status)
-        </th>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header blue lighten-4">
+                Danh sách chuyến bay sẵn có
+            </div>
+            <div class="card-body">
+                <table class="table table-hover table-striped">
+                    <thead class="info-color text-white">
+                        <tr>
+                            <th>
+                                #ID
+                            </th>
+                            <th>
+                                Mã chuyến bay
+                            </th>
+                            <th>
+                                Thời gian khởi hành
+                            </th>
+                            <th>
+                                Trễ chuyến
+                            </th>
+                            <th>
+                                Thời gian bay
+                            </th>
+                            <th>
+                                Khởi hành
+                            </th>
+                            <th>
+                                Đến
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Status)
+                            </th>
 
-        <th></th>
-    </tr>
-    </thead>
-    <tbody>
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RollNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FlightTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TimeOfTransit)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FlightDuration)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DbPlane.PlaneName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DbRoute.FromAirport)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DbRoute.ToAirport)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatedAt)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UpdatedAt)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Status)
-            </td>
-            <td>
-                @*<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |*@
-                <a asp-action="DetailsFlight" asp-route-id="@item.Id">Details</a> @*|*@
-                @*<a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
-            </td>
-        </tr>
-        
-    }
-    </tbody>
-</table>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Id)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.RollNumber)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.FlightTime)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TimeOfTransit)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.FlightDuration)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DbRoute.FromAirport)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DbRoute.ToAirport)
+                                </td>
+                                <td class="green-text">
+                                    @Html.DisplayFor(modelItem => item.Status)
+                                </td>
+                                <td>
+                                    @*<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |*@
+                                    <a class="btn btn-rounded btn-primary btn-sm" asp-action="DetailsFlight" asp-route-id="@item.Id">Chi tiết</a> @*|*@
+                                    @*<a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
+                                </td>
+                            </tr>
+
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
 <label>@ViewBag.Data</label>
