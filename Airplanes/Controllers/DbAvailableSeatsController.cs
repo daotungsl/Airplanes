@@ -58,7 +58,7 @@ namespace Airplanes.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,DbFlightId,TicketClassId,Quantity,CreatedAt,UpdatedAt")] DbAvailableSeat dbAvailableSeat)
+        public async Task<IActionResult> Create([Bind("Id,DbFlightId,TicketClassId,Quantity, RestTicket,CreatedAt,UpdatedAt")] DbAvailableSeat dbAvailableSeat)
         {
             if (ModelState.IsValid)
             {
@@ -94,7 +94,7 @@ namespace Airplanes.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(long id, [Bind("Id,DbFlightId,TicketClassId,Quantity,CreatedAt,UpdatedAt")] DbAvailableSeat dbAvailableSeat)
+        public async Task<IActionResult> Edit(long id, [Bind("Id,DbFlightId,TicketClassId,Quantity,RestTicket,CreatedAt,UpdatedAt")] DbAvailableSeat dbAvailableSeat)
         {
             if (id != dbAvailableSeat.Id)
             {

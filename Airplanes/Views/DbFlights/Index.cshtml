@@ -13,6 +13,12 @@
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RollNumber)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.FlightTime)
             </th>
             <th>
@@ -20,6 +26,15 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.FlightDuration)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DbPlane.PlaneName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DbRoute.FromAirport)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DbRoute.ToAirport)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.CreatedAt)
@@ -30,18 +45,19 @@
             <th>
                 @Html.DisplayNameFor(model => model.Status)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DbPlane)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DbRoute)
-            </th>
+
             <th></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RollNumber)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.FlightTime)
             </td>
@@ -52,6 +68,15 @@
                 @Html.DisplayFor(modelItem => item.FlightDuration)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.DbPlane.PlaneName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DbRoute.FromAirport)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DbRoute.ToAirport)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.CreatedAt)
             </td>
             <td>
@@ -60,12 +85,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Status)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DbPlane.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DbRoute.Id)
-            </td>
+
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |

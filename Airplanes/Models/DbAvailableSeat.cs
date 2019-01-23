@@ -27,6 +27,10 @@ namespace Airplanes.Models
         [Display(Name = "Quantity")]
         public int Quantity { get; set; }
 
+        [Required]
+        [DataType(DataType.Text)]
+        [Display(Name = "Rest Ticket")]
+        public int RestTicket { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
 

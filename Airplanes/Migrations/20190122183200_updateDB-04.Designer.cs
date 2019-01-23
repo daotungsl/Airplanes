@@ -4,14 +4,16 @@ using Airplanes.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Airplanes.Migrations
 {
     [DbContext(typeof(AirplanesContext))]
-    partial class AirplanesContextModelSnapshot : ModelSnapshot
+    [Migration("20190122183200_updateDB-04")]
+    partial class updateDB04
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
