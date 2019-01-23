@@ -49,7 +49,7 @@ namespace Airplanes.Controllers
         public IActionResult Create()
         {
             ViewData["DbCityId"] = new SelectList(_context.DbCity, "Id", "Id");
-            ViewData["DbCountryId"] = new SelectList(_context.DbCountry, "Id", "Id");
+            //ViewData["DbCountryId"] = new SelectList(_context.DbCountry, "Id", "Id");
             return View();
         }
 

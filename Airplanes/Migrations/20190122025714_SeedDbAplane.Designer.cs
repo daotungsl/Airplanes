@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Airplanes.Migrations
 {
     [DbContext(typeof(AirplanesContext))]
-    [Migration("20190121163422_SeedDbRoute")]
-    partial class SeedDbRoute
+    [Migration("20190122025714_SeedDbAplane")]
+    partial class SeedDbAplane
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

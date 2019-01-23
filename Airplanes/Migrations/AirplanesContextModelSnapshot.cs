@@ -124,6 +124,8 @@ namespace Airplanes.Migrations
 
                     b.Property<int>("Quantity");
 
+                    b.Property<int>("RestTicket");
+
                     b.Property<long>("TicketClassId");
 
                     b.Property<DateTime>("UpdatedAt");
@@ -202,6 +204,10 @@ namespace Airplanes.Migrations
                     b.Property<int>("FlightDuration");
 
                     b.Property<DateTime>("FlightTime");
+
+                    b.Property<string>("RollNumber")
+                        .IsRequired()
+                        .HasMaxLength(20);
 
                     b.Property<int>("Status");
 

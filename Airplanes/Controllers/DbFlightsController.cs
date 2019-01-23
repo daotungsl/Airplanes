@@ -17,7 +17,7 @@ namespace Airplanes.Controllers
         {
             _context = context;
         }
-
+        
         // GET: DbFlights
         public async Task<IActionResult> Index()
         {
@@ -32,7 +32,7 @@ namespace Airplanes.Controllers
             {
                 return NotFound();
             }
-
+            
             var dbFlight = await _context.DbFlight
                 .Include(d => d.DbPlane)
                 .Include(d => d.DbRoute)
@@ -58,7 +58,7 @@ namespace Airplanes.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,DbRouteId,DbPlaneId,FlightTime,TimeOfTransit,FlightDuration,CreatedAt,UpdatedAt,Status")] DbFlight dbFlight)
+        public async Task<IActionResult> Create([Bind("Id,RollNumber,DbRouteId,DbPlaneId,FlightTime,TimeOfTransit,FlightDuration,CreatedAt,UpdatedAt,Status")] DbFlight dbFlight)
         {
             if (ModelState.IsValid)
             {
@@ -94,7 +94,7 @@ namespace Airplanes.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(long id, [Bind("Id,DbRouteId,DbPlaneId,FlightTime,TimeOfTransit,FlightDuration,CreatedAt,UpdatedAt,Status")] DbFlight dbFlight)
+        public async Task<IActionResult> Edit(long id, [Bind("Id,RollNumber,DbRouteId,DbPlaneId,FlightTime,TimeOfTransit,FlightDuration,CreatedAt,UpdatedAt,Status")] DbFlight dbFlight)
         {
             if (id != dbFlight.Id)
             {
