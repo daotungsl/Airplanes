@@ -29,7 +29,7 @@ namespace Airplanes.Models
 
         [Required]
         [DataType(DataType.Text)]
-        [Display(Name = "Rest Ticket")]
+        [Display(Name = "Available Ticket")]
         public int RestTicket { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }

@@ -1,0 +1,83 @@
+﻿@model Airplanes.Controllers.MainController.UsersViewController
+
+@{
+    ViewData["Title"] = "Choice Route";
+}
+
+<h2>Choice Route</h2>
+
+<h4>Select information</h4>
+<hr />
+<h5>@ViewBag.Match</h5>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="PickUpTicket">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input  hidden asp-for="pickUp.FlightId" value="@ViewData["flightId"]" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="pickUp.DbPassenger.FullName" class="control-label"></label>
+                <input asp-for="pickUp.DbPassenger.FullName" class="form-control" />
+                <span asp-validation-for="pickUp.DbPassenger.FullName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="pickUp.DbPassenger.Gender" class="control-label"></label>
+                <fieldset>
+                    <select class="custom-select browser-default" asp-for="pickUp.DbPassenger.Gender">
+                        <option value="1">Male</option>
+                        <option selected="selected" value="0">Female</option>
+                        <option value="2">Other</option>
+                    </select>
+                </fieldset>
+                <span asp-validation-for="pickUp.DbPassenger.Gender" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="pickUp.DbPassenger.Phone" class="control-label"></label>
+                <input asp-for="pickUp.DbPassenger.Phone" class="form-control" />
+                <span asp-validation-for="pickUp.DbPassenger.Phone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="pickUp.DbPassenger.Birthday" class="control-label"></label>
+                <input asp-for="pickUp.DbPassenger.Birthday" class="form-control" />
+                <span asp-validation-for="pickUp.DbPassenger.Birthday" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="pickUp.DbTicket.DbTicketClass.TicketClassName" class="control-label"></label>
+                <select asp-for="pickUp.DbTicket.DbTicketClass.TicketClassName" class="custom-select browser-default" asp-items="ViewBag.TicketClass"></select>
+
+            </div>
+
+
+            @*<div class="form-group">
+            <label asp-for="selectInformation.FromAirport" class="control-label"></label>
+            <select asp-for="selectInformation.FromAirport" class="custom-select browser-default" asp-items="ViewBag.FromAirport"></select>
+
+        </div>
+
+        <div class="form-group">
+            <label asp-for="selectInformation.ToAirport" class="control-label"></label>
+            <select asp-for="selectInformation.ToAirport" class="custom-select browser-default" asp-items="ViewBag.ToAirport">
+                <option value="0">Every Where</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="selectInformation.Date" class="control-label"></label>
+            <input asp-for="selectInformation.Date" class="form-control" />
+            <span asp-validation-for="selectInformation.Date" class="text-danger"></span>
+        </div>*@
+            <div class="form-group">
+                <input type="submit" value="Submit" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    @*<a asp-action="Index">Back to List</a>*@
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
