@@ -23,6 +23,7 @@ namespace Airplanes.Controllers.MainController
 
         [BindProperty]
         public SelectInformation selectInformation { get; set; }
+        public PickUp pickUp { get; set; }
         public class DetailFlight
         {
             public DbFlight DbFlight { get; set; }
@@ -43,9 +44,17 @@ namespace Airplanes.Controllers.MainController
 
             [Required]
             [DataType(DataType.Date)]
+            [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
             public DateTime Date { get; set; }
         }
 
+        public class PickUp
+        {
+            public long FlightId { get; set; }
+            public DbPassenger DbPassenger { get; set; }
+            public DbOrder DbOrder { get; set; }
+            public DbTicket DbTicket { get; set; }
+        }
 
         public IActionResult ChoiseRoute()
         {
@@ -112,24 +121,39 @@ namespace Airplanes.Controllers.MainController
                         return View("ListFlightChoise", flights);
                     }
                 }
-
-                var route = _context.DbRoute.FirstOrDefault(r => r.FromAirport == city1.Code && r.ToAirport == city2.Code);
-                
-                if (route == null)
+                else
                 {
-                    ViewBag.Error = "Can't Found";
-                    Debug.WriteLine("Route null");
-                    return View("ListFlightChoise");
-                }
-                flights =
-                    await _context.DbFlight.Where(f => f.DbRouteId == route.Id && f.FlightTime.Date == date).ToListAsync();
-                if (flights.Count == 0)
-                {
-                    ViewBag.Data = "Not Found";
-                    return View("ListFlightChoise", flights);
-                }
+                    var route = _context.DbRoute.FirstOrDefault(r => r.FromAirport == city1.Code && r.ToAirport == city2.Code);
+                    if (FlightExists(date))
+                    {
+                        if (route == null)
+                        {
+                            ViewBag.Error = "Can't Found";
+                            Debug.WriteLine("Route null");
+                            return View("ListFlightChoise", flights);
+                        }
+                        flights =
+                            await _context.DbFlight.Where(f => f.DbRouteId == route.Id && f.FlightTime.Date == date).ToListAsync();
+                        if (flights.Count == 0)
+                        {
+                            ViewBag.Data = "Not Found";
+                            return View("ListFlightChoise", flights);
+                        }
 
-                return View("ListFlightChoise", flights);
+                        return View("ListFlightChoise", flights);
+                    }
+                    else
+                    {
+                        flights = await _context.DbFlight.Where(f => f.DbRouteId == route.Id).ToListAsync();
+                        if (flights.Count == 0)
+                        {
+                            ViewBag.Data = "Not Found";
+                            return View("ListFlightChoise", flights);
+                        }
+                        return View("ListFlightChoise", flights);
+                    }
+                    
+                }
 
             }
             //ViewData["DbCityId"] = new SelectList(_context.DbCity, "Id", "Id", dbAirport.DbCityId);
@@ -137,7 +161,6 @@ namespace Airplanes.Controllers.MainController
             return View();
         }
 
-        
         public async Task<IActionResult> ListFlightChoise()
         {
             ViewData["NotFound"] = "Not Found Flight";
@@ -146,6 +169,7 @@ namespace Airplanes.Controllers.MainController
 
         public async Task<IActionResult> DetailsFlight(long? id)
         {
+            ViewData["flightId"] = id;
             if (id == null)
             {
                 return NotFound();
@@ -182,6 +206,21 @@ namespace Airplanes.Controllers.MainController
         private bool FlightExists(DateTime date)
         {
             return _context.DbFlight.Any(e => e.FlightTime.Date == date);
+        }
+        
+        [HttpGet]
+        public async Task<IActionResult> PickUpTicket(long flightId)
+        {
+            ViewData["flightId"] = flightId;
+            List<DbAvailableSeat> list = await _context.DbAvailableSeat.Where(a => a.DbFlightId == flightId).ToListAsync();
+            foreach (var item in list)
+            {
+                Debug.WriteLine(item.DbTicketClass.TicketClassName);
+            }
+            //var idFlight = id;
+            //Debug.WriteLine("PICK UP FLIGHT ID" + idFlight);
+            //ViewData["TicketClass"] = new SelectList(_context.DbTicketClass, "TicketClassName", "TicketClassName");
+            return View();
         }
     }
 }

@@ -12,7 +12,7 @@
         <hr />
         <div class="row">
             <div class="col-md-6">
-                <dl class="dl-horizontal">
+                <dl class="dl-horizontal" style="border: 1px solid black; margin-top: 8px">
                     <dt>
                         @Html.DisplayNameFor(model => model.DbFlight.RollNumber)
                     </dt>
@@ -71,36 +71,42 @@
                 <dl class="dl-horizontal">
                     @foreach (var item in Model.DbAvailableSeats)
                     {
-                        <dt>
-                            @Html.DisplayNameFor(modelItem => item.DbTicketClass.TicketClassName)
-                        </dt>
-                        <dd>
-                            @Html.DisplayFor(modelItem => item.DbTicketClass.TicketClassName)
-                        </dd>
-                        <dt>
-                            @Html.DisplayNameFor(modelItem => item.DbTicketClass.Price)
-                        </dt>
-                        <dd>
-                            @Html.DisplayFor(modelItem => item.DbTicketClass.Price)
-                        </dd>
-                        <dt>
-                            @Html.DisplayNameFor(modelItem => item.Quantity)
-                        </dt>
-                        <dd>
-                            @Html.DisplayFor(modelItem => item.Quantity)
-                        </dd>
-                        <dt>
-                            @Html.DisplayNameFor(modelItem => item.RestTicket)
-                        </dt>
-                        <dd>
-                            @Html.DisplayFor(modelItem => item.RestTicket)
-                        </dd>
+                        <div style="border: 1px solid black; margin-bottom: 10px">
+                            <dt>
+                                @Html.DisplayNameFor(modelItem => item.DbTicketClass.TicketClassName)
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(modelItem => item.DbTicketClass.TicketClassName)
+                            </dd>
+                            <dt>
+                                @Html.DisplayNameFor(modelItem => item.DbTicketClass.Price)
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(modelItem => item.DbTicketClass.Price)
+                            </dd>
+                            <dt>
+                                @Html.DisplayNameFor(modelItem => item.Quantity)
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(modelItem => item.Quantity)
+                            </dd>
+                            <dt>
+                                @Html.DisplayNameFor(modelItem => item.RestTicket)
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(modelItem => item.RestTicket)
+                            </dd>
+                        </div>
                     }
                 </dl>
             </div>
         </div>
     </div>
-    <div>
-        @*<a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |*@
+<div class="row">
+    <div class="col-md-6">
         <a asp-action="ListFlightChoise">Back to List</a>
     </div>
+    <div class="col-md-6">
+        <a href="/usersview/PickUpTicket?flightId=@ViewData["flightId"]">Pick up ticket</a>
+    </div>
+</div>
