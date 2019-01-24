@@ -9,10 +9,10 @@ namespace Airplanes.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             // City Viet Nam
-            string[] CityDataVN = { "Côn Đảo", "Phù Cát", "Cà Mau", "Cần Thơ", "Buôn Ma Thuột",
-                                    "Đà Nẵng", "Điện Biên Phủ", "Pleiku", "Cát Bi", "Nội Bài",
-                                    "Tân Sơn Nhất", "Cam Ranh", "Rạch Giá", "Phú Quốc", "Liên Khương",
-                                    "Vinh", "Tuy Hòa", "Đồng Hới", "Chu Lai", "Phú Bài", "Thọ Xuân", "Vân Đồn" };
+            string[] CityDataVN = { "N'Côn Đảo", "N'Phù Cát", "N'Cà Mau", "N'Cần Thơ", "N'Buôn Ma Thuột",
+                                    "N'Đà Nẵng", "N'Điện Biên Phủ", "N'Pleiku", "N'Cát Bi", "N'Nội Bài",
+                                    "N'Tân Sơn Nhất", "N'Cam Ranh", "N'Rạch Giá", "N'Phú Quốc", "N'Liên Khương",
+                                    "N'Vinh", "N'Tuy Hòa", "N'Đồng Hới", "N'Chu Lai", "N'Phú Bài", "N'Thọ Xuân", "N'Vân Đồn" };
             string[] CodeDataVN = { "VCS","UIH","CAH","VCA", "BMV","DAD","DIN","PXU",
                                     "HPH","HAN","SGN","CXR","VKG","PQC","DLI","VII",
                                     "TBB","VDH","VCL","HUI","THD","VDO" };
@@ -29,9 +29,9 @@ namespace Airplanes.Migrations
             };
 
             //City China
-            string[] CityDataChina = { "Bắc Kinh", "Thượng Hải", "Quảng Châu", "Hàng Châu", "Thành Đô","Hồng Kông","Macau" };
-            string[] CodeDataChina = { "BJS","SHA","CAN","HGH", "CTU","HKG", "MFM" };
-            int[] ZipCodeDataChina = { 100000, 200000 , 510000 , 310000 , 610000 ,518000,519020};
+            string[] CityDataChina = { "N'Bắc Kinh", "N'Thượng Hải", "N'Quảng Châu", "N'Hàng Châu", "N'Thành Đô", "N'Hồng Kông", "N'Macau" };
+            string[] CodeDataChina = { "BJS", "SHA", "CAN", "HGH", "CTU", "HKG", "MFM" };
+            int[] ZipCodeDataChina = { 100000, 200000, 510000, 310000, 610000, 518000, 519020 };
 
             for (int num = 0; num < CityDataChina.Length; num++)
             {
@@ -43,9 +43,9 @@ namespace Airplanes.Migrations
             };
 
             //City Dai loan
-            string[] CityDataDailoan = { "Đài Bắc", "Cao Hùng"};
+            string[] CityDataDailoan = { "N'Đài Bắc", "N'Cao Hùng" };
             string[] CodeDataDailoan = { "TPE", "KHH", };
-            int[] ZipCodeDataDailoan = {100,800 };
+            int[] ZipCodeDataDailoan = { 100, 800 };
 
             for (int num = 0; num < CityDataDailoan.Length; num++)
             {
@@ -59,7 +59,7 @@ namespace Airplanes.Migrations
             //City Japan
             string[] CityDataJapan = { "Fukuoka", "Nagoya", "Osake", "Tokyo", "Osaka" };
             string[] CodeDataJapan = { "FUK", "NGO", "KIX", "HND", "OSA" };
-            int[] ZipCodeDataJapan = {8100000,4500001,5300001,1000001,530001 };
+            int[] ZipCodeDataJapan = { 8100000, 4500001, 5300001, 1000001, 530001 };
 
             for (int num = 0; num < CityDataJapan.Length; num++)
             {
@@ -73,7 +73,7 @@ namespace Airplanes.Migrations
             //City korea
             string[] CityDataKorea = { "Busan", "Seoul" };
             string[] CodeDataKorea = { "PUS", "ICN", };
-            int[] ZipCodeDataKorea = {600011,100011 };
+            int[] ZipCodeDataKorea = { 600011, 100011 };
 
             for (int num = 0; num < CityDataKorea.Length; num++)
             {
@@ -115,7 +115,7 @@ namespace Airplanes.Migrations
             //City Indo
             string[] CityDataIndonesia = { "Jakarta", "Bali", "Kuala Namu" };
             string[] CodeDataIndonesia = { "CGK", "DPS", "KNO" };
-            int[] ZipCodeDataIndonesia = { 10110 , 20362 , 20362 };
+            int[] ZipCodeDataIndonesia = { 10110, 20362, 20362 };
 
             for (int num = 0; num < CityDataIndonesia.Length; num++)
             {
@@ -141,9 +141,9 @@ namespace Airplanes.Migrations
                 );
 
             //Cyti France
-            string[] CityDataFrance = { "Paris", "Marseille","Montpellier","Nice" };
-            string[] CodeDataFrance = { "CDG", "MRS","MPL","NCE" };
-            int[] ZipCodeDataFrance = { 75001 , 13001 , 34000 , 06300 };
+            string[] CityDataFrance = { "Paris", "Marseille", "Montpellier", "Nice" };
+            string[] CodeDataFrance = { "CDG", "MRS", "MPL", "NCE" };
+            int[] ZipCodeDataFrance = { 75001, 13001, 34000, 06300 };
 
             for (int num = 0; num < CityDataFrance.Length; num++)
             {
@@ -171,7 +171,7 @@ namespace Airplanes.Migrations
             //City Australia 
             string[] CityDataAustralia = { "Melbourne", "Sydney", "Marrara" };
             string[] CodeDataAustralia = { "MEL", "SYD", "DRW" };
-            int[] ZipCodeDataAustralia = { 3000 , 2000 , 0812 };
+            int[] ZipCodeDataAustralia = { 3000, 2000, 0812 };
 
             for (int num = 0; num < CityDataAustralia.Length; num++)
             {
@@ -199,7 +199,7 @@ namespace Airplanes.Migrations
             //City Thailand
             string[] CityDataThailand = { "Băng Cốc", "Phuket" };
             string[] CodeDataThailand = { "BKK", "HKT" };
-            int[] ZipCodeDataThailand = { 41380 , 83000 };
+            int[] ZipCodeDataThailand = { 41380, 83000 };
 
             for (int num = 0; num < CityDataThailand.Length; num++)
             {
@@ -243,7 +243,7 @@ namespace Airplanes.Migrations
                                     "Los Angeles","Miami","Minneapolis","New York","Philadephia",
                                     "Portland","San Francisco","Seattle","St Louis" };
             string[] CodeDataUS = { "ATL", "BOS", "DFW", "DEN", "HNL", "LAX", "MIA", "MSP", "JFK", "PHL", "PDX", "SFO", "SEA", "STL" };
-            int[] ZipCodeDataUS = {  30303, 02109, 60482, 80204, 96813, 90012, 33128, 55415, 10007, 19107, 97201, 94102, 98104, 63103 };
+            int[] ZipCodeDataUS = { 30303, 02109, 60482, 80204, 96813, 90012, 33128, 55415, 10007, 19107, 97201, 94102, 98104, 63103 };
 
             for (int num = 0; num < CityDataUS.Length; num++)
             {
@@ -267,9 +267,9 @@ namespace Airplanes.Migrations
                 columns: new[] { "Code", "name", "ZipCode", "DbCountryId", "AirportStatus", "CreatedAt", "UpdatedAt" },
                 values: new object[] { "PRG", "Praha", 25765, 46, 1, DateTime.Now, DateTime.Now }
                 );
-                
+
         }
-        
+
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             for (int i = 0; i < 193; i++)
