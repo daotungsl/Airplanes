@@ -9,16 +9,16 @@ namespace Airplanes.Security
 {
     public class MailVerify
     {
-        public void SendMail(string receiveMail, string receiveName, string mailContent)
+        public void SendMail(string receiveMail, string receiveName, string mailContent, string subject)
         {
             SmtpClient client = new SmtpClient("smtp.gmail.com", 587);
             client.EnableSsl = true;
-            MailAddress from = new MailAddress("tienbac250496@gmail.com", "My Admin");
+            MailAddress from = new MailAddress("eagleairline1707@gmail.com", "Eagle Airline");
             MailAddress to = new MailAddress(receiveMail, receiveName);
             MailMessage message = new MailMessage(from, to);
             message.Body = mailContent;
-            message.Subject = "Assignment Authentication Verify";
-            NetworkCredential myCreds = new NetworkCredential("tienbac250496@gmail.com", "brhfeoigofkfnyid", "");
+            message.Subject = subject;
+            NetworkCredential myCreds = new NetworkCredential("eagleairline1707@gmail.com", "iggzuapaoagalzam", "");
             client.Credentials = myCreds;
             try
             {
@@ -30,5 +30,7 @@ namespace Airplanes.Security
             }
             Console.WriteLine("Goodbye.");
         }
+
+        //brhfeoigofkfnyid
     }
 }

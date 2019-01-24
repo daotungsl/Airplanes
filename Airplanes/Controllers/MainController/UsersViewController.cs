@@ -32,7 +32,6 @@ namespace Airplanes.Controllers.MainController
 
         [BindProperty]
         public SelectInformation selectInformation { get; set; }
-        public PickUp pickUp { get; set; }
         public class DetailFlight
         {
             public DbFlight DbFlight { get; set; }
@@ -56,37 +55,7 @@ namespace Airplanes.Controllers.MainController
             [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
             public DateTime Date { get; set; }
         }
-
-        public class PickUp
-        {
-            public long FlightId { get; set; }
-            public long OrderId { get; set; }
-
-            [Required]
-            [StringLength(50, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
-            [DataType(DataType.Text)]
-            [Display(Name = "Full Name")]
-            public string FullName { get; set; }
-
-            [Required]
-            [Display(Name = "Gender")]
-            public Gender Gender { get; set; }
-
-            [Required]
-            [DataType(DataType.Text)]
-            [Display(Name = "Phone Number")]
-            public string Phone { get; set; }
-
-            [Required]
-            [DataType(DataType.Date)]
-            [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-            [Display(Name = "Birthday")]
-            public DateTime Birthday { get; set; }
-
-            public string TicketClassName { get; set; }
-            public TicketStatus Status { get; set; }
-        }
-
+        
         [AllowAnonymous]
         public IActionResult ChoiseRoute()
         {
@@ -193,6 +162,7 @@ namespace Airplanes.Controllers.MainController
             return View();
         }
 
+        [AllowAnonymous]
         public async Task<IActionResult> ListFlightChoise()
         {
             ViewData["NotFound"] = "Not Found Flight";
@@ -241,73 +211,6 @@ namespace Airplanes.Controllers.MainController
             return _context.DbFlight.Any(e => e.FlightTime.Date == date);
         }
         
-        [HttpGet]
-        [Authorize(Roles = "User, Admin, Manager")]
-        public async Task<IActionResult> PickUpTicket(long flightId, long orderId)
-        {
-            ViewData["flightId"] = flightId;
-            ViewData["OrderId"] = orderId;
-            ViewData["TicketsClass"] = new SelectList(_context.DbTicketClass, "TicketClassName", "TicketClassName");
-            
-            return View();
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> PickUpTicket([Bind("FlightId, OrderId, FullName, Gender, Phone, Birthday, TicketClassName")] PickUp pickUp)
-        {
-            if (ModelState.IsValid)
-            {
-                //if (_signInManager.IsSignedIn(User))
-                //{
-                    
-                //}
-                DbPassenger passenger = new DbPassenger
-                {
-                    UId = _userManager.GetUserId(User),
-                    FullName = pickUp.FullName,
-                    Gender = pickUp.Gender,
-                    Phone = pickUp.Phone,
-                    Birthday = pickUp.Birthday,
-                    CreatedAt = DateTime.Now,
-                    UpdatedAt = DateTime.Now
-                };
-                _context.Add(passenger);
-                _context.SaveChanges();
-
-                //var a = OrderExists(DateTime.Today, passenger.Id);
-                //if (OrderExists(DateTime.Today, passenger.Id))
-                //{
-
-                //}
-                DbTicketClass ticketClass =
-                    _context.DbTicketClass.FirstOrDefault(t => t.TicketClassName == pickUp.TicketClassName);
-
-                DbTicket ticket = new DbTicket
-                {
-                    DbOrderId = pickUp.OrderId,
-                    DbTicketClassId = ticketClass.Id,
-                    DbFlightId = pickUp.FlightId,
-                    DbPassengerId = passenger.Id,
-                    Price = ticketClass.Price + 250000,
-                    Status = pickUp.Status
-                };
-                _context.DbTicket.Add(ticket);
-                _context.SaveChanges();
-
-                AirplanesUser user = _userManager.Users.FirstOrDefault(s => s.Id == passenger.UId);
-
-                user.RewardPoints += ticketClass.Points;
-
-                await _userManager.UpdateAsync(user);
-                return Redirect("/");
-            }
-            return View();
-        }
-
-        private bool OrderExists(DateTime date, long id)
-        {
-            return _context.DbOrder.Any(e => e.CreatedAt.Date == date && e.Id == id);
-        }
+        
     }
 }
