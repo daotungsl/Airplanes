@@ -146,13 +146,14 @@ namespace Airplanes.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        public async Task<IActionResult> NewsView()
+        {
+            return View(await _context.DbNews.ToListAsync());
+        }
+
         private bool DbNewsExists(long id)
         {
             return _context.DbNews.Any(e => e.Id == id);
-        }
-        public IActionResult NewsView()
-        {
-            return View();
         }
     }
 }
