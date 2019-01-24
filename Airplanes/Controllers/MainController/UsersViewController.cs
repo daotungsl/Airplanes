@@ -166,7 +166,7 @@ namespace Airplanes.Controllers.MainController
         public async Task<IActionResult> ListFlightChoise()
         {
             ViewData["NotFound"] = "Not Found Flight";
-            return View("ListFlightChoise");
+            return View("ListFlightChoise", flights);
         }
 
         [AllowAnonymous]

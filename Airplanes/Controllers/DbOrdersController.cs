@@ -69,7 +69,7 @@ namespace Airplanes.Controllers
         
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,UId,Adult,Child,Quantity,CreatedAt,Status")] DbOrder dbOrder)
+        public async Task<IActionResult> Create([Bind("Id,UId,Adult,Child,Quantity,Total,CreatedAt,Status")] DbOrder dbOrder)
         {
             if (ModelState.IsValid)
             {
@@ -111,7 +111,7 @@ namespace Airplanes.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(long id, [Bind("Id,UId,Adult,Child,Quantity,CreatedAt,Status")] DbOrder dbOrder)
+        public async Task<IActionResult> Edit(long id, [Bind("Id,UId,Adult,Child,Quantity,Total,CreatedAt,Status")] DbOrder dbOrder)
         {
             if (id != dbOrder.Id)
             {

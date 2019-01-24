@@ -1,0 +1,80 @@
+﻿@model IEnumerable<Airplanes.Models.DbTicket>
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    @*<a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+        <a asp-action="Index">Back
+        to List</a>*@
+</div>
+<table class="table table-striped">
+    <thead class="blue-gradient text-white">
+    <tr>
+        <th class="font-weight-bold">
+            @Html.DisplayNameFor(model => model.DbOrderId)
+        </th>
+        <th class="font-weight-bold">
+            @Html.DisplayNameFor(model => model.DbTicketClass)
+        </th>
+        <th class="font-weight-bold">
+            @Html.DisplayNameFor(model => model.DbFlight)
+        </th>
+        <th class="font-weight-bold">
+            @Html.DisplayNameFor(model => model.DbPassenger)
+        </th>
+        <th class="font-weight-bold">
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th class="font-weight-bold">
+            @Html.DisplayNameFor(model => model.CreatedAt)
+        </th>
+        <th class="font-weight-bold">
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr class="px-auto py-auto">
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DbTicketClass.TicketClassName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DbFlight.RollNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DbPassenger.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedAt)
+            </td>
+            <td class="green-text">
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td class="px-0">
+                <a class="btn btn-sm btn-primary btn-rounded my-0 waves-effect z-depth-0" asp-action="Cancel" asp-route-id="@item.Id" asp-route-oId="@ViewData["OrderId"]" asp-route-uId="@ViewData["UId"]">Cancel</a>
+            </td>
+        </tr>
+
+    }
+    </tbody>
+</table>
+<div>
+    <a href="/History/HistoryOrder?UId=@ViewData["AId"]">Back To List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
