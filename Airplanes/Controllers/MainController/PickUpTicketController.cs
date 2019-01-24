@@ -126,21 +126,22 @@ namespace Airplanes.Controllers.MainController
                     _context.DbAvailableSeat.Update(availableSeat);
                     await _context.SaveChangesAsync();
                     
-                    // Ghi điểm vào log
-                    DbRewardPointsLog rewardPointsLog = new DbRewardPointsLog
-                    {
-                        UId = _userManager.GetUserId(User),
-                        NameLog = "Cộng điểm",
-                        Points = (ticketClass.Points * order.Quantity),
-                        Note = "Cộng " + (ticketClass.Points * order.Quantity) + " do mua " + order.Quantity + " vé hạng " + ticketClass.TicketClassName
-                    };
-                    _context.DbRewardPointsLog.Add(rewardPointsLog);
-                    await _context.SaveChangesAsync();
 
                     // Update tổng giá
                     order.Total = (ticket.Price * order.Quantity);
                     _context.DbOrder.Update(order);
                     await _context.SaveChangesAsync();
+
+                    // Ghi điểm vào log
+                    //DbRewardPointsLog rewardPointsLog = new DbRewardPointsLog
+                    //{
+                    //    UId = _userManager.GetUserId(User),
+                    //    NameLog = "Cộng điểm",
+                    //    Points = (ticketClass.Points * order.Quantity),
+                    //    Note = "Cộng " + (ticketClass.Points * order.Quantity) + " do mua " + order.Quantity + " vé hạng " + ticketClass.TicketClassName
+                    //};
+                    //_context.DbRewardPointsLog.Add(rewardPointsLog);
+                    //await _context.SaveChangesAsync();
 
                     // Gửi mail thông báo
                     var subject = "Booking Notification";
