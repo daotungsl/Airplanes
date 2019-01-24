@@ -5,19 +5,28 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Airplanes.Models;
+using Airplanes.Models.Custom;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using UserGender = Airplanes.Models.Custom.UserGender;
 
 namespace Airplanes.Controllers.MainController
 {
     public class UsersViewController : Controller
     {
         private readonly AirplanesContext _context;
+        private readonly UserManager<AirplanesUser> _userManager;
+        private readonly SignInManager<AirplanesUser> _signInManager;
         private List<DbFlight> flights = new List<DbFlight>();
-        public UsersViewController(AirplanesContext context)
+        public UsersViewController(AirplanesContext context, UserManager<AirplanesUser> userManager,
+            SignInManager<AirplanesUser> signInManager)
         {
+            _userManager = userManager;
+            _signInManager = signInManager;
             _context = context;
         }
 
@@ -51,11 +60,34 @@ namespace Airplanes.Controllers.MainController
         public class PickUp
         {
             public long FlightId { get; set; }
-            public DbPassenger DbPassenger { get; set; }
-            public DbOrder DbOrder { get; set; }
-            public DbTicket DbTicket { get; set; }
+            public long OrderId { get; set; }
+
+            [Required]
+            [StringLength(50, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
+            [DataType(DataType.Text)]
+            [Display(Name = "Full Name")]
+            public string FullName { get; set; }
+
+            [Required]
+            [Display(Name = "Gender")]
+            public Gender Gender { get; set; }
+
+            [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "Phone Number")]
+            public string Phone { get; set; }
+
+            [Required]
+            [DataType(DataType.Date)]
+            [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+            [Display(Name = "Birthday")]
+            public DateTime Birthday { get; set; }
+
+            public string TicketClassName { get; set; }
+            public TicketStatus Status { get; set; }
         }
 
+        [AllowAnonymous]
         public IActionResult ChoiseRoute()
         {
             //ViewData["FromAirport"] = new SelectList(_context.DbRoute, "FromAirport", "FromAirport");
@@ -167,6 +199,7 @@ namespace Airplanes.Controllers.MainController
             return View("ListFlightChoise");
         }
 
+        [AllowAnonymous]
         public async Task<IActionResult> DetailsFlight(long? id)
         {
             ViewData["flightId"] = id;
@@ -209,18 +242,72 @@ namespace Airplanes.Controllers.MainController
         }
         
         [HttpGet]
-        public async Task<IActionResult> PickUpTicket(long flightId)
+        [Authorize(Roles = "User, Admin, Manager")]
+        public async Task<IActionResult> PickUpTicket(long flightId, long orderId)
         {
             ViewData["flightId"] = flightId;
-            List<DbAvailableSeat> list = await _context.DbAvailableSeat.Where(a => a.DbFlightId == flightId).ToListAsync();
-            foreach (var item in list)
-            {
-                Debug.WriteLine(item.DbTicketClass.TicketClassName);
-            }
-            //var idFlight = id;
-            //Debug.WriteLine("PICK UP FLIGHT ID" + idFlight);
-            //ViewData["TicketClass"] = new SelectList(_context.DbTicketClass, "TicketClassName", "TicketClassName");
+            ViewData["OrderId"] = orderId;
+            ViewData["TicketsClass"] = new SelectList(_context.DbTicketClass, "TicketClassName", "TicketClassName");
+            
             return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> PickUpTicket([Bind("FlightId, OrderId, FullName, Gender, Phone, Birthday, TicketClassName")] PickUp pickUp)
+        {
+            if (ModelState.IsValid)
+            {
+                //if (_signInManager.IsSignedIn(User))
+                //{
+                    
+                //}
+                DbPassenger passenger = new DbPassenger
+                {
+                    UId = _userManager.GetUserId(User),
+                    FullName = pickUp.FullName,
+                    Gender = pickUp.Gender,
+                    Phone = pickUp.Phone,
+                    Birthday = pickUp.Birthday,
+                    CreatedAt = DateTime.Now,
+                    UpdatedAt = DateTime.Now
+                };
+                _context.Add(passenger);
+                _context.SaveChanges();
+
+                //var a = OrderExists(DateTime.Today, passenger.Id);
+                //if (OrderExists(DateTime.Today, passenger.Id))
+                //{
+
+                //}
+                DbTicketClass ticketClass =
+                    _context.DbTicketClass.FirstOrDefault(t => t.TicketClassName == pickUp.TicketClassName);
+
+                DbTicket ticket = new DbTicket
+                {
+                    DbOrderId = pickUp.OrderId,
+                    DbTicketClassId = ticketClass.Id,
+                    DbFlightId = pickUp.FlightId,
+                    DbPassengerId = passenger.Id,
+                    Price = ticketClass.Price + 250000,
+                    Status = pickUp.Status
+                };
+                _context.DbTicket.Add(ticket);
+                _context.SaveChanges();
+
+                AirplanesUser user = _userManager.Users.FirstOrDefault(s => s.Id == passenger.UId);
+
+                user.RewardPoints += ticketClass.Points;
+
+                await _userManager.UpdateAsync(user);
+                return Redirect("/");
+            }
+            return View();
+        }
+
+        private bool OrderExists(DateTime date, long id)
+        {
+            return _context.DbOrder.Any(e => e.CreatedAt.Date == date && e.Id == id);
         }
     }
 }

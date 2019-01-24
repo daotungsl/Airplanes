@@ -1,4 +1,5 @@
 ﻿using Airplanes.Models;
+using Airplanes.Models.Admin;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -51,7 +52,7 @@ namespace Airplanes
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public async void Configure(IApplicationBuilder app, IHostingEnvironment env/*, RoleManager<IdentityRole> roleManager*/)
         {
             if (env.IsDevelopment())
             {
@@ -73,6 +74,7 @@ namespace Airplanes
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+            //await Initializer.initial(roleManager);
         }
     }
 }

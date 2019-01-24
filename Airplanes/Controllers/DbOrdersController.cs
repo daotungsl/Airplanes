@@ -7,19 +7,26 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Airplanes.Models;
 using Airplanes.Models.Custom;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace Airplanes.Controllers
 {
     public class DbOrdersController : Controller
     {
         private readonly AirplanesContext _context;
-
-        public DbOrdersController(AirplanesContext context)
+        private readonly UserManager<AirplanesUser> _userManager;
+        private readonly SignInManager<AirplanesUser> _signInManager;
+        public DbOrdersController(AirplanesContext context, UserManager<AirplanesUser> userManager,
+            SignInManager<AirplanesUser> signInManager)
         {
+            _userManager = userManager;
+            _signInManager = signInManager;
             _context = context;
         }
 
         // GET: DbOrders
+        [Authorize(Roles = "Admin, Manager")]
         public async Task<IActionResult> Index()
         {
             var AirplanesContext = _context.DbOrder.Include(d => d.AirplanesUser);
@@ -27,6 +34,7 @@ namespace Airplanes.Controllers
         }
 
         // GET: DbOrders/Details/5
+        [Authorize(Roles = "Admin, User, Manager")]
         public async Task<IActionResult> Details(long? id)
         {
             if (id == null)
@@ -45,31 +53,43 @@ namespace Airplanes.Controllers
             return View(dbOrder);
         }
 
+        public static long fId;
         // GET: DbOrders/Create
-        public IActionResult Create()
+        [Authorize(Roles = "User, Admin, Manager")]
+        public IActionResult Create(long flightId)
         {
-            ViewData["UId"] = new SelectList(_context.Set<AirplanesUser>(), "Id", "Id");
+            fId = flightId;
+            //ViewData["UId"] = new SelectList(_context.Set<AirplanesUser>(), "Id", "Id");
             return View();
         }
 
         // POST: DbOrders/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,UId,Quantity,CreatedAt,Status")] DbOrder dbOrder)
+        public async Task<IActionResult> Create([Bind("Id,UId,Adult,Child,Quantity,CreatedAt,Status")] DbOrder dbOrder)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(dbOrder);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                if (_signInManager.IsSignedIn(User))
+                {
+                    dbOrder.UId = _userManager.GetUserId(User);
+                    dbOrder.Quantity = dbOrder.Child + dbOrder.Adult;
+                    _context.Add(dbOrder);
+                    await _context.SaveChangesAsync();
+                    return /*RedirectToAction("PickUpTicket", "UsersView");*/
+                        Redirect("/UsersView/PickUpTicket?flightId=" + fId + "&orderId=" + dbOrder.Id);
+                }
+                
             }
             ViewData["UId"] = new SelectList(_context.Set<AirplanesUser>(), "Id", "Id", dbOrder.UId);
             return View(dbOrder);
         }
 
         // GET: DbOrders/Edit/5
+        [Authorize(Roles = "Admin, Manager")]
         public async Task<IActionResult> Edit(long? id)
         {
             if (id == null)
@@ -91,7 +111,7 @@ namespace Airplanes.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(long id, [Bind("Id,UId,Quantity,CreatedAt,Status")] DbOrder dbOrder)
+        public async Task<IActionResult> Edit(long id, [Bind("Id,UId,Adult,Child,Quantity,CreatedAt,Status")] DbOrder dbOrder)
         {
             if (id != dbOrder.Id)
             {
@@ -123,6 +143,7 @@ namespace Airplanes.Controllers
         }
 
         // GET: DbOrders/Delete/5
+        [Authorize(Roles = "Admin, Manager")]
         public async Task<IActionResult> Delete(long? id)
         {
             if (id == null)

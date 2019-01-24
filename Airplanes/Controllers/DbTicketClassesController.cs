@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Airplanes.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Airplanes.Controllers
 {
+    [Authorize(Roles = "Admin, Manager")]
     public class DbTicketClassesController : Controller
     {
         private readonly AirplanesContext _context;
@@ -53,7 +55,7 @@ namespace Airplanes.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,TicketClassName,Price,CreatedAt,UpdatedAt")] DbTicketClass dbTicketClass)
+        public async Task<IActionResult> Create([Bind("Id,TicketClassName,Points,Price,CreatedAt,UpdatedAt")] DbTicketClass dbTicketClass)
         {
             if (ModelState.IsValid)
             {
@@ -85,7 +87,7 @@ namespace Airplanes.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(long id, [Bind("Id,TicketClassName,Price,CreatedAt,UpdatedAt")] DbTicketClass dbTicketClass)
+        public async Task<IActionResult> Edit(long id, [Bind("Id,TicketClassName,Points,Price,CreatedAt,UpdatedAt")] DbTicketClass dbTicketClass)
         {
             if (id != dbTicketClass.Id)
             {

@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using System;
+using Airplanes.Models.Admin;
 using Microsoft.EntityFrameworkCore;
 
 namespace Airplanes
@@ -23,6 +24,7 @@ namespace Airplanes
                     var context = services.GetRequiredService<AirplanesContext>();
                     context.Database.Migrate();
                     DbSeed.Initialize(services);
+                    Initializer.initial(context, services).Wait();
                 }
                 catch (Exception ex)
                 {
