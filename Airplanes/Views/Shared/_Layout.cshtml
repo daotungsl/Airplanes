@@ -38,7 +38,7 @@
             
         </nav>
 
-        <ul class="navbar nav aqua-gradient py-1 font-weight-bold mt-3 nav-fill">
+        <ul class="navbar nav aqua-gradient py-1 font-weight-bold mt-3">
             <li class="nav-item">
                 <a class="nav-link active white-text" href="#">Tin tức</a>
             </li>
@@ -102,22 +102,6 @@
             <li class="nav-item">
                 <a class="nav-link disabled" href="#">|</a>
             </li>
-
-            <li class="nav-item dropdown white-text">
-                <a class="nav-link dropdown-toggle white-text" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
-                   aria-expanded="false">Đăng nhập</a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Đại lý</a>
-                    <a class="dropdown-item" href="/oauth2/authentication">Thành viên</a>
-                    <a class="dropdown-item" href="#">Phòng vé</a>
-                    <a class="dropdown-item" href="#">Tổng đài</a>
-                    <a class="dropdown-item" href="#">Kênh thanh toán</a>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#">|</a>
-            </li>
-
             <li class="nav-item dropdown white-text">
                 <a class="nav-link dropdown-toggle white-text" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                    aria-expanded="false">Đặt vé</a>
@@ -132,6 +116,11 @@
                     <a class="dropdown-item" href="#">FAQ</a>
                 </div>
             </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#">|</a>
+            </li>
+            <partial name="_LoginPartial" />
+            
 
         </ul>
         
