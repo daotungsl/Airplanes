@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Airplanes.Migrations
 {
     [DbContext(typeof(AirplanesContext))]
-    [Migration("20190122180615_SeedDbFlight")]
-    partial class SeedDbFlight
+    [Migration("20190124034637_SeedDbTransit")]
+    partial class SeedDbTransit
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -126,6 +126,8 @@ namespace Airplanes.Migrations
 
                     b.Property<int>("Quantity");
 
+                    b.Property<int>("RestTicket");
+
                     b.Property<long>("TicketClassId");
 
                     b.Property<DateTime>("UpdatedAt");
@@ -204,6 +206,10 @@ namespace Airplanes.Migrations
                     b.Property<int>("FlightDuration");
 
                     b.Property<DateTime>("FlightTime");
+
+                    b.Property<string>("RollNumber")
+                        .IsRequired()
+                        .HasMaxLength(20);
 
                     b.Property<int>("Status");
 
