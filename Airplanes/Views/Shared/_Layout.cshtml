@@ -17,7 +17,7 @@
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
-        
+
     </environment>
 </head>
 <body class="p-0" style="background: url('https://images.pexels.com/photos/633520/pexels-photo-633520.jpeg?cs=srgb&dl=architecture-background-blue-633520.jpg&fm=jpg') right no-repeat border-box; background-size: 100% 100%">
@@ -35,7 +35,7 @@
                     </a>
                 </div>
             </div>
-            
+
         </nav>
 
         <ul class="navbar nav aqua-gradient py-1 font-weight-bold mt-3">
@@ -50,7 +50,7 @@
                 <a class="nav-link dropdown-toggle white-text" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                    aria-expanded="false">Thông tin chuyến bay</a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Eagle Airline</a>
+                    <a class="dropdown-item" href="/Home/EagleAirline">Eagle Airline</a>
                     <a class="dropdown-item" href="#">Lịch bay</a>
                     <a class="dropdown-item" href="#">Tình trạng chuyến bay</a>
                     <a class="dropdown-item" href="#">Sân bay và nhà ga</a>
@@ -59,9 +59,9 @@
                     <a class="dropdown-item" href="#">Quy định vé</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="#">Phí và lệ phí</a>
-                    <a class="dropdown-item" href="#">Giấy tờ và thủ tục</a>
+                    <a class="dropdown-item" href="/Home/Yeu_cau_ve_giay_to">Giấy tờ và thủ tục</a>
                     <a class="dropdown-item" href="#">Tìm kiếm hành lý</a>
-                    <a class="dropdown-item" href="#">Quy định nối, chuyển chuyến</a>
+                    <a class="dropdown-item" href="/Home/Thong_tin_noi_chuyen">Quy định nối, chuyển chuyến</a>
                 </div>
             </li>
             <li class="nav-item">
@@ -72,15 +72,15 @@
                 <a class="nav-link dropdown-toggle white-text" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                    aria-expanded="false">Dịch vụ</a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Dịch vụ trên chuyến bay</a>
-                    <a class="dropdown-item" href="#">Dịch vụ hàng hóa</a>
-                    <a class="dropdown-item" href="#">Dịch vụ hành lý</a>
-                    <a class="dropdown-item" href="#">Dịch vụ đặc biệt</a>
+                    <a class="dropdown-item" href="/Home/Dich_vu_tren_chuyen_bay">Dịch vụ trên chuyến bay</a>
+                    <a class="dropdown-item" href="/Home/Dieu_le_van_chuyen">Dịch vụ hàng hóa</a>
+                    <a class="dropdown-item" href="/Home/Dich_vu_hanh_ly">Dịch vụ hành lý</a>
+                    <a class="dropdown-item" href="/Home/Dich_vu_dac_biet">Dịch vụ đặc biệt</a>
                     <a class="dropdown-item" href="#">VIP Eagle</a>
                     <a class="dropdown-item" href="#">Premium Travel</a>
                     <a class="dropdown-item" href="#">Hàng miễn thuế</a>
                     <a class="dropdown-item" href="#">Dịch vụ chọn chỗ</a>
-                    <a class="dropdown-item" href="#">Dịch vụ làm thủ tục nhanh</a>
+                    <a class="dropdown-item" href="/Home/Dich_vu_thu_tuc_nhanh">Dịch vụ làm thủ tục nhanh</a>
                 </div>
             </li>
             <li class="nav-item">
@@ -106,7 +106,7 @@
                 <a class="nav-link dropdown-toggle white-text" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                    aria-expanded="false">Đặt vé</a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Mua vé online</a>
+                    <a class="dropdown-item" href="/usersview/choiseroute">Mua vé online</a>
                     <a class="dropdown-item" href="#">Đại lý</a>
                     <a class="dropdown-item" href="#">Phòng vé</a>
                     <a class="dropdown-item" href="#">Tổng đài</a>
@@ -120,10 +120,10 @@
                 <a class="nav-link disabled" href="#">|</a>
             </li>
             <partial name="_LoginPartial" />
-            
+
 
         </ul>
-        
+
 
         <partial name="_CookieConsentPartial" />
 
@@ -177,6 +177,6 @@
 
         @RenderSection("Scripts", required: false)
     </div>
-    
+
 </body>
 </html>
