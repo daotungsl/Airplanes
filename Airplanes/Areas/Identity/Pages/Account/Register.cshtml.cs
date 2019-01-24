@@ -123,7 +123,8 @@ namespace Airplanes.Areas.Identity.Pages.Account
 
                     //await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
                     //    $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
-                    mv.SendMail(Input.Email, user.Id, callbackUrl);
+                    string subject = "Eagle Airline Verify Email";
+                    mv.SendMail(Input.Email, user.Id, callbackUrl, subject);
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     return LocalRedirect(returnUrl);
                 }

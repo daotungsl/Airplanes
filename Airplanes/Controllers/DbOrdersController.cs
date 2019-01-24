@@ -80,7 +80,7 @@ namespace Airplanes.Controllers
                     _context.Add(dbOrder);
                     await _context.SaveChangesAsync();
                     return /*RedirectToAction("PickUpTicket", "UsersView");*/
-                        Redirect("/UsersView/PickUpTicket?flightId=" + fId + "&orderId=" + dbOrder.Id);
+                        Redirect("/PickUpTicket/PickUpTicket?flightId=" + fId + "&orderId=" + dbOrder.Id);
                 }
                 
             }
