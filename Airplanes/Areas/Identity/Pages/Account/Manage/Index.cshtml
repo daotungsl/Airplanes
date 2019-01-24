@@ -24,15 +24,15 @@
                 <form id="profile-form" method="post">
                     <div asp-validation-summary="All" class="text-danger"></div>
                     <div class="form-group">
-                        <label asp-for="UId"></label>
+                        <label asp-for="UId">Mã tài khoản</label>
                         <input asp-for="UId" class="form-control" disabled />
                     </div>
                     <div class="form-group">
-                        <label asp-for="Username"></label>
+                        <label asp-for="Username">Email đăng nhập</label>
                         <input asp-for="Username" class="form-control" disabled />
                     </div>
                     <div class="form-group">
-                        <label asp-for="Input.Email"></label>
+                        <label asp-for="Input.Email">Email</label>
                         @if (Model.IsEmailConfirmed)
                         {
                             <div class="input-group">
@@ -43,47 +43,47 @@
                         else
                         {
                             <input asp-for="Input.Email" class="form-control" />
-                            <button id="email-verification" type="submit" asp-page-handler="SendVerificationEmail" class="btn btn-link blue-text">Send verification email</button>
+                            <button id="email-verification" type="submit" asp-page-handler="SendVerificationEmail" class="btn btn-link blue-text">Gửi email kích hoạt</button>
                         }
                         <span asp-validation-for="Input.Email" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <label asp-for="Input.FullName"></label>
+                        <label asp-for="Input.FullName">Tên đầy đủ</label>
                         <input asp-for="Input.FullName" class="form-control" />
                         <span asp-validation-for="Input.FullName" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <label asp-for="Input.PhoneNumber"></label>
+                        <label asp-for="Input.PhoneNumber">Số điện thoại</label>
                         <input asp-for="Input.PhoneNumber" class="form-control" />
                         <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <label asp-for="Input.Gender"></label>
+                        <label asp-for="Input.Gender">Giới tính</label>
                         <fieldset>
                             <select class="custom-select browser-default form-control" asp-for="Input.Gender">
-                                <option value="1">Male</option>
-                                <option value="0">Female</option>
-                                <option value="2">Other</option>
+                                <option value="1">Nam</option>
+                                <option value="0">Nữ</option>
+                                <option value="2">Khác</option>
                             </select>
                         </fieldset>
                         <span asp-validation-for="Input.Gender" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <label asp-for="Input.Birthday"></label>
+                        <label asp-for="Input.Birthday">NGày sinh</label>
                         <input asp-for="Input.Birthday" class="form-control" />
                         <span asp-validation-for="Input.Birthday" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <label asp-for="IdNumber"></label>
+                        <label asp-for="IdNumber">Chứng minh thư/Hộ chiếu</label>
                         <input asp-for="IdNumber" class="form-control" disabled />
                     </div>
                     <div class="form-group">
-                        <label asp-for="Input.Address"></label>
+                        <label asp-for="Input.Address">Địa chỉ</label>
                         <input asp-for="Input.Address" class="form-control" />
                         <span asp-validation-for="Input.Address" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <label asp-for="RewardPoints"></label>
+                        <label asp-for="RewardPoints">Điểm thưởng</label>
                         <input asp-for="RewardPoints" class="form-control" disabled />
                     </div>
                     <button type="submit" class="btn btn-info btn-block">Save</button>

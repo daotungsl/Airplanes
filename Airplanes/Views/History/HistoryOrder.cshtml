@@ -3,93 +3,101 @@
     ViewData["Title"] = "History Order";
 }
 
-<table class="table table-striped">
-    <thead class="blue-gradient text-white">
-        <tr>
-            <th class="font-weight-bold">
-                @Html.DisplayNameFor(model => model.Id)
-            </th>
-            <th class="font-weight-bold">
-                @Html.DisplayNameFor(model => model.Adult)
-            </th>
-            <th class="font-weight-bold">
-                @Html.DisplayNameFor(model => model.Child)
-            </th>
-            <th class="font-weight-bold">
-                @Html.DisplayNameFor(model => model.Total)
-            </th>
-            <th class="font-weight-bold">
-                @Html.DisplayNameFor(model => model.CreatedAt)
-            </th>
-            <th class="font-weight-bold">
-                @Html.DisplayNameFor(model => model.Status)
-            </th>
-            @*<th>
-            @Html.DisplayNameFor(model => model.DbPlane.PlaneName)
-        </th>*@
-            @*<th class="font-weight-bold">
-            @Html.DisplayNameFor(model => model.DbRoute.FromAirport)
-        </th>
-        <th class="font-weight-bold">
-            @Html.DisplayNameFor(model => model.DbRoute.ToAirport)
-        </th>*@
-            @*<th>
-            @Html.DisplayNameFor(model => model.CreatedAt)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UpdatedAt)
-        </th>*@
-            @*<th class="font-weight-bold">
-            @Html.DisplayNameFor(model => model.Status)
-        </th>*@
+<div class="card">
+    <div class="card-header bg-primary text-white">
+        Lịch sử đặt vé
+    </div>
+    <div class="card-body">
+        <table class="table table-striped">
+            <thead class="blue-gradient text-white">
+                <tr>
+                    <th class="font-weight-bold">
+                        #ID
+                    </th>
+                    <th class="font-weight-bold">
+                        Trẻ em
+                    </th>
+                    <th class="font-weight-bold">
+                        Người lớn
+                    </th>
+                    <th class="font-weight-bold">
+                        Tổng tiền
+                    </th>
+                    <th class="font-weight-bold">
+                        Ngày đăng ký
+                    </th>
+                    <th class="font-weight-bold">
+                        Trạng thái
+                    </th>
+                    @*<th>
+                        @Html.DisplayNameFor(model => model.DbPlane.PlaneName)
+                    </th>*@
+                    @*<th class="font-weight-bold">
+                        @Html.DisplayNameFor(model => model.DbRoute.FromAirport)
+                    </th>
+                    <th class="font-weight-bold">
+                        @Html.DisplayNameFor(model => model.DbRoute.ToAirport)
+                    </th>*@
+                    @*<th>
+                        @Html.DisplayNameFor(model => model.CreatedAt)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.UpdatedAt)
+                    </th>*@
+                    @*<th class="font-weight-bold">
+                        @Html.DisplayNameFor(model => model.Status)
+                    </th>*@
 
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr class="px-auto py-auto">
-                <td>
-                    @Html.DisplayFor(modelItem => item.Id)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Adult)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Child)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Total)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CreatedAt)
-                </td>
-                @*<td>
-                        @Html.DisplayFor(modelItem => item.DbPlane.PlaneName)
-                    </td>*@
-                @*<td>
-                        @Html.DisplayFor(modelItem => item.CreatedAt)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.UpdatedAt)
-                    </td>*@
-                <td class="green-text">
-                    @Html.DisplayFor(modelItem => item.Status)
-                </td>
-                <td class="px-0">
-                    @*<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |*@
-                    <a class="btn btn-sm btn-primary btn-rounded my-0 waves-effect z-depth-0" asp-action="DetailOrder" asp-route-id="@item.Id" asp-route-uId="@ViewData["UId1"]">Details</a> @*|*@
-                    @*<a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
-                </td>
-            </tr>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr class="px-auto py-auto">
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Adult)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Child)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Total)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CreatedAt)
+                        </td>
+                        @*<td>
+                            @Html.DisplayFor(modelItem => item.DbPlane.PlaneName)
+                        </td>*@
+                        @*<td>
+                            @Html.DisplayFor(modelItem => item.CreatedAt)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UpdatedAt)
+                        </td>*@
+                        <td class="green-text">
+                            @Html.DisplayFor(modelItem => item.Status)
+                        </td>
+                        <td class="px-0">
+                            @*<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |*@
+                            <a class="btn btn-sm btn-primary btn-rounded my-0 waves-effect z-depth-0" asp-action="DetailOrder" asp-route-id="@item.Id" asp-route-uId="@ViewData["UId1"]">Details</a> @*|*@
+                            @*<a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
+                        </td>
+                    </tr>
 
-        }
-    </tbody>
-</table>
-<div>
-        <a href="/Identity/Account/Manage">Back</a>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="card-footer">
+        <a class="btn btn-info" href="/Identity/Account/Manage">Trở về</a>
+    </div>
 </div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
