@@ -4,51 +4,67 @@
     ViewBag.Title = "Tin Tức";
     Layout = "_Layout";
 }
-@foreach (var item in Model)
-{
-    <!-- Card -->
-    <div class="card promoting-card">
 
-        <!-- Card content -->
-        <div class="card-body d-flex flex-row">
+<h4 class="text-center py-4">Two equal columns layout</h4>
 
-            <!-- Avatar -->
-            <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-8.jpg" class="rounded-circle mr-3" height="50px" width="50px" alt="avatar">
+        @foreach (var item in Model)
+        {
+            <!-- Grid row -->
+            <div class="row">
 
-            <!-- Content -->
-            <div>
+                <!-- Grid column -->
+                <div class="col-md-6 mb-4">
+                    <!-- Card -->
+                    <div class="card promoting-card">
 
-                <!-- Title -->
-                <h4 class="card-title font-weight-bold mb-2">@Html.DisplayNameFor(modelItem => item.Title)</h4>
-                <!-- Subtitle -->
-                <p class="card-text"><i class="far fa-clock pr-2"></i>@Html.DisplayNameFor(modelItem => item.Date)</p>
-                <p class ="card-title font-small">@Html.DisplayNameFor(modelItem => item.Author)</p>
-            </div>
+                        <!-- Card content -->
+                        <div class="card-body d-flex flex-row">
 
-        </div>
+                            <!-- Avatar -->
+                            <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-8.jpg" class="rounded-circle mr-3" height="50px" width="50px" alt="avatar">
 
-        <!-- Card image -->
-        <div class="view overlay">
-            <img class="card-img-top rounded-0" src="https://mdbootstrap.com/img/Photos/Horizontal/Food/full page/2.jpg" alt="Card image cap">
-            <a href="#!">
-                <div class="mask rgba-white-slight"></div>
-            </a>
-        </div>
+                            <!-- Content -->
+                            <div>
 
-        <!-- Card content -->
-        <div class="card-body">
+                                <!-- Title -->
+                                <h4 class="card-title font-weight-bold mb-2">@Html.DisplayFor(modelItem => item.Title)</h4>
+                                <!-- Subtitle -->
+                                <p class="card-text"><i class="far fa-clock pr-2"></i>@Html.DisplayFor(modelItem => item.Date)</p>
+                                <p class="card-title font-small">@Html.DisplayFor(modelItem => item.Author).</p>
+                            </div>
 
-            <div class="collapse-content">
+                        </div>
 
-                <!-- Text -->
-                <p class="card-text collapse" id="collapseContent">@Html.DisplayNameFor(modelItem => item.Content)</p>
-                <!-- Button -->
-                <a class="btn btn-flat red-text p-1 my-1 mr-0 mml-1 collapsed" data-toggle="collapse" href="#collapseContent" aria-expanded="false" aria-controls="collapseContent">Read More</a>
+                        <!-- Card image -->
+                        <div class="view overlay">
+                            <img class="card-img-top rounded-0" src="/images/tmg-article_main_wide_2x copy.jpg" alt="Card image cap">
+                            <a href="#!">
+                                <div class="mask rgba-white-slight"></div>
+                            </a>
+                        </div>
 
-            </div>
+                        <!-- Card content -->
+                        <div class="card-body">
 
-        </div>
+                            <div class="collapse-content">
 
-    </div>
-    <!-- Card -->
-}
+                                <!-- Text -->
+                                <p class="card-text collapse" id="collapseContent">@Html.DisplayFor(modelItem => item.Content)</p>
+                                <!-- Button -->
+                                <a class="btn btn-flat red-text p-1 my-1 mr-0 mml-1 collapsed" data-toggle="collapse" href="#collapseContent" aria-expanded="false" aria-controls="collapseContent">Read More</a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <!-- Card -->
+                </div>
+                </div>
+                <!--/.Card-->
+            <!-- Grid column -->
+
+
+
+        }
+
