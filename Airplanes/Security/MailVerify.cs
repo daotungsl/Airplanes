@@ -18,6 +18,7 @@ namespace Airplanes.Security
             MailMessage message = new MailMessage(from, to);
             message.Body = mailContent;
             message.Subject = subject;
+            message.IsBodyHtml = true;
             NetworkCredential myCreds = new NetworkCredential("eagleairline1707@gmail.com", "iggzuapaoagalzam", "");
             client.Credentials = myCreds;
             try
@@ -32,5 +33,6 @@ namespace Airplanes.Security
         }
 
         //brhfeoigofkfnyid
+
     }
 }
