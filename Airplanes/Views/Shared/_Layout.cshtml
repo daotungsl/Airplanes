@@ -20,7 +20,7 @@
         
     </environment>
 </head>
-<body class="p-0" style="background: url('https://i.imgur.com/iN18GIe.jpg') right no-repeat border-box; background-size: 100% 100%">
+<body class="p-0" style="background: url('https://images.pexels.com/photos/633520/pexels-photo-633520.jpeg?cs=srgb&dl=architecture-background-blue-633520.jpg&fm=jpg') right no-repeat border-box; background-size: 100% 100%">
 
     <div class="container p-0 white">
         <nav class="navbar bg-transparent mt-0" style="
@@ -149,6 +149,13 @@
                 $(document).ready(function () {
                     console.log("ready!");
                     $('.datepicker').pickadate();
+                    $("option").each(function (index) {
+
+                        console.log($(this).text());
+                        var str = $(this).text();
+                        $(this).text(str.replace("N'", ""));
+
+                    })
                 });
             </script>
         </environment>
