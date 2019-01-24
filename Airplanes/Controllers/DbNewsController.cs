@@ -150,5 +150,9 @@ namespace Airplanes.Controllers
         {
             return _context.DbNews.Any(e => e.Id == id);
         }
+        public IActionResult NewsView()
+        {
+            return View();
+        }
     }
 }
