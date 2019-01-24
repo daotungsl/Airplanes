@@ -1,5 +1,6 @@
 ﻿@using Airplanes.Models.Custom
 @inject SignInManager<AirplanesUser> SignInManager
+@inject UserManager<AirplanesUser> UserManager
 @{
     var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
 }
@@ -18,8 +19,8 @@
         </li>
 
     }
-    <li class="mt-1">
-        <a class="btn btn-info btn-block" href="/History/HistoryOrder">Lịch sử giao dịch</a>
+    <li class="@ManageNavPages.ExternalLoginsNavClass(ViewContext) mt-1">
+        <a class="btn btn-info btn-block" href="/History/HistoryOrder?UId=@UserManager.GetUserId(User)">Lịch sử giao dịch</a>
     </li>
     <li class="@ManageNavPages.TwoFactorAuthenticationNavClass(ViewContext) mt-1">
         <a class="btn btn-info btn-block" asp-page="./TwoFactorAuthentication">Đăng nhập 2 bước</a>
