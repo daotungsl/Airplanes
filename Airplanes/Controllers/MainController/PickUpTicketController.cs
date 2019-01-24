@@ -109,15 +109,30 @@ namespace Airplanes.Controllers.MainController
                     AirplanesUser user = _userManager.Users.FirstOrDefault(s => s.Id == passenger.UId);
                     user.RewardPoints += ticketClass.Points;
 
+                    DbOrder order = _context.DbOrder.FirstOrDefault(o => o.Id == pickUp.OrderId);
+
+                    DbAvailableSeat availableSeat = _context.DbAvailableSeat.FirstOrDefault(s =>
+                        s.DbFlightId == pickUp.FlightId && s.TicketClassId == ticketClass.Id);
+
+                    availableSeat.RestTicket = availableSeat.RestTicket - order.Quantity;
+                    _context.DbAvailableSeat.Update(availableSeat);
+                    await _context.SaveChangesAsync();
+
                     await _userManager.UpdateAsync(user);
                     var subject = "Booking Notification";
-                    var content = "Chuc mung ban da dat ve thanh cong!";
+                    var content = "!";
 
                     mv.SendMail(user.Email, user.Id, content, subject);
 
-                    return Redirect("/UsersView/ChoiseRoute");
+                    return Redirect("/PickUpTicket/BookingSuccess");
                 }
             }
+            return View();
+        }
+
+        [Authorize(Roles = "User, Admin, Manager")]
+        public IActionResult BookingSuccess()
+        {
             return View();
         }
 
