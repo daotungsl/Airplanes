@@ -13,7 +13,16 @@
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.AirplanesUser)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Adult)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Child)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Quantity)
@@ -34,7 +43,16 @@
 @foreach (var item in Model) {
         <tr>
             <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.AirplanesUser.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Adult)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Child)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Quantity)

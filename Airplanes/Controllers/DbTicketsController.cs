@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Airplanes.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Airplanes.Controllers
 {
+    [Authorize(Roles = "Admin, Manager")]
     public class DbTicketsController : Controller
     {
         private readonly AirplanesContext _context;

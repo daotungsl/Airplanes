@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Airplanes.Models;
 using Airplanes.Models.Custom;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Airplanes.Controllers
 {
+    [Authorize(Roles = "Admin, Manager")]
     public class DbRewardPointsLogsController : Controller
     {
         private readonly AirplanesContext _context;
