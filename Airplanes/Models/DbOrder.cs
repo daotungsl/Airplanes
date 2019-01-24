@@ -31,12 +31,17 @@ namespace Airplanes.Models
         [Display(Name = "Quantity Ticket")]
         public int Quantity { get; set; }
 
+        [Required]
+        [Display(Name = "Total Price")]
+        public int Total { get; set; }
+
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
         public OrderStatus Status { get; set; }
 
         public DbOrder()
         {
+            Total = 0;
             CreatedAt = DateTime.Now;
             UpdatedAt = DateTime.Now;
             Status = OrderStatus.Paid;

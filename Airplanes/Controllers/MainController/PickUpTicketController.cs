@@ -80,6 +80,7 @@ namespace Airplanes.Controllers.MainController
             {
                 if (_signInManager.IsSignedIn(User))
                 {
+                    // Thêm thông tin người được ghi trên vé
                     DbPassenger passenger = new DbPassenger
                     {
                         UId = _userManager.GetUserId(User),
@@ -91,9 +92,12 @@ namespace Airplanes.Controllers.MainController
                     _context.DbPassenger.Add(passenger);
                     await _context.SaveChangesAsync();
 
+                    // Lấy ra loại vé theo tên
                     DbTicketClass ticketClass =
                         _context.DbTicketClass.FirstOrDefault(t => t.TicketClassName == pickUp.TicketClassName);
 
+
+                    // Thêm thông tin vào vé
                     DbTicket ticket = new DbTicket
                     {
                         DbOrderId = pickUp.OrderId,
@@ -105,20 +109,40 @@ namespace Airplanes.Controllers.MainController
                     };
                     _context.DbTicket.Add(ticket);
                     await _context.SaveChangesAsync();
-
-                    AirplanesUser user = _userManager.Users.FirstOrDefault(s => s.Id == passenger.UId);
-                    user.RewardPoints += ticketClass.Points;
-
+                    
+                    // Lấy ra order
                     DbOrder order = _context.DbOrder.FirstOrDefault(o => o.Id == pickUp.OrderId);
 
+                    // Cộng điểm vào điểm tích lũy
+                    AirplanesUser user = _userManager.Users.FirstOrDefault(s => s.Id == passenger.UId);
+                    user.RewardPoints = user.RewardPoints + (ticketClass.Points * order.Quantity);
+                    await _userManager.UpdateAsync(user);
+
+                    // trừ số vé khả dụng
                     DbAvailableSeat availableSeat = _context.DbAvailableSeat.FirstOrDefault(s =>
                         s.DbFlightId == pickUp.FlightId && s.TicketClassId == ticketClass.Id);
 
                     availableSeat.RestTicket = availableSeat.RestTicket - order.Quantity;
                     _context.DbAvailableSeat.Update(availableSeat);
                     await _context.SaveChangesAsync();
+                    
+                    // Ghi điểm vào log
+                    DbRewardPointsLog rewardPointsLog = new DbRewardPointsLog
+                    {
+                        UId = _userManager.GetUserId(User),
+                        NameLog = "Cộng điểm",
+                        Points = (ticketClass.Points * order.Quantity),
+                        Note = "Cộng " + (ticketClass.Points * order.Quantity) + " do mua " + order.Quantity + " vé hạng " + ticketClass.TicketClassName
+                    };
+                    _context.DbRewardPointsLog.Add(rewardPointsLog);
+                    await _context.SaveChangesAsync();
 
-                    await _userManager.UpdateAsync(user);
+                    // Update tổng giá
+                    order.Total = (ticket.Price * order.Quantity);
+                    _context.DbOrder.Update(order);
+                    await _context.SaveChangesAsync();
+
+                    // Gửi mail thông báo
                     var subject = "Booking Notification";
                     var content = "!";
 
