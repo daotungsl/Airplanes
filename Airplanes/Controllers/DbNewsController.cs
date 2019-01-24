@@ -6,11 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Airplanes.Models;
-using Microsoft.AspNetCore.Authorization;
+
 
 namespace Airplanes.Controllers
 {
-    [Authorize(Roles = "Admin, Manager")]
+    
     public class DbNewsController : Controller
     {
         private readonly AirplanesContext _context;
@@ -146,13 +146,14 @@ namespace Airplanes.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        public async Task<IActionResult> NewsView()
+        {
+            return View(await _context.DbNews.ToListAsync());
+        }
+
         private bool DbNewsExists(long id)
         {
             return _context.DbNews.Any(e => e.Id == id);
-        }
-        public IActionResult NewsView()
-        {
-            return View();
         }
     }
 }
