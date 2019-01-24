@@ -15,6 +15,15 @@ namespace Airplanes.Models
         public string UId { get; set; }
         public AirplanesUser AirplanesUser { get; set; }
 
+        [Required]
+        [Display(Name = "Adult")]
+        public int Adult { get; set; }
+
+        [Required]
+        [Display(Name = "Child")]
+        public int Child { get; set; }
+        
+
         // 1 Order có thể có 1 hoặc nhiều vé bay
         public ICollection<DbTicket> DbTickets { get; set; }
 

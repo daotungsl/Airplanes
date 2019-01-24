@@ -23,6 +23,11 @@ namespace Airplanes.Models
         [Display(Name = "Price")]
         public int Price { get; set; }
 
+        [Required]
+        [DataType(DataType.Text)]
+        [Display(Name = "Points")]
+        public int Points { get; set; }
+
         // 1 hạng vé chứa nhiều vé ở các chuyến bay khác nhau
         public ICollection<DbTicket> DbTickets { get; set; }
         public ICollection<DbAvailableSeat> DbAvailableSeats { get; set; }

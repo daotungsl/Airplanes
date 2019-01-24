@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Airplanes.Models;
 using Airplanes.Models.Custom;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Airplanes.Controllers
 {
@@ -19,6 +20,7 @@ namespace Airplanes.Controllers
             _context = context;
         }
 
+        [Authorize(Roles = "Admin, Manager")]
         // GET: DbPassengers
         public async Task<IActionResult> Index()
         {
@@ -26,6 +28,7 @@ namespace Airplanes.Controllers
             return View(await AirplanesContext.ToListAsync());
         }
 
+        [Authorize(Roles = "Admin, Manager, User")]
         // GET: DbPassengers/Details/5
         public async Task<IActionResult> Details(long? id)
         {
@@ -45,6 +48,7 @@ namespace Airplanes.Controllers
             return View(dbPassenger);
         }
 
+        [Authorize(Roles = "Admin, Manager, User")]
         // GET: DbPassengers/Create
         public IActionResult Create()
         {
@@ -69,6 +73,7 @@ namespace Airplanes.Controllers
             return View(dbPassenger);
         }
 
+        [Authorize(Roles = "Admin, Manager, User")]
         // GET: DbPassengers/Edit/5
         public async Task<IActionResult> Edit(long? id)
         {
@@ -122,6 +127,7 @@ namespace Airplanes.Controllers
             return View(dbPassenger);
         }
 
+        [Authorize(Roles = "Admin, Manager")]
         // GET: DbPassengers/Delete/5
         public async Task<IActionResult> Delete(long? id)
         {
